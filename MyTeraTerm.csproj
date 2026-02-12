@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- 版本資訊 - 只需在這裡修改 -->
+    <Version>1.0.0</Version>
+    <Product>MyTeraTerm</Product>
+
+    <!-- 設定應用程式 Icon -->
+    <ApplicationIcon>resource\Choco_256x256.ico</ApplicationIcon>
+    <!-- 自訂 Publish 輸出路徑 -->
+    <PublishDir>$(MSBuildProjectDirectory)\publish\MyTeraTerm V$(Version)\</PublishDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SnmpSharpNet" Version="0.9.7" />
+    <PackageReference Include="System.IO.Ports" Version="10.0.2" />
+  </ItemGroup>
+
+  <!-- 將 icon 設為內嵌資源 -->
+  <ItemGroup>
+    <EmbeddedResource Include="resource\Choco_256x256.ico" />
+  </ItemGroup>
+
+  <!-- 將 VERSION 檔案設為總是複製 -->
+  <ItemGroup>
+    <None Update="VERSION">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

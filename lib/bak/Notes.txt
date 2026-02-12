@@ -1,0 +1,7 @@
+20260209:
+    ComPortBridge.cs
+    Fiexd the connection TX/RX couldn't used 
+    when serial port still RX trans data.
+20260211:
+    TTLInterpreter.cs
+    Fiexd pductrl couldn't using user variable

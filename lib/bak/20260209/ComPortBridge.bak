@@ -1,0 +1,331 @@
+﻿using System;
+using System.IO.Ports;
+using System.Text;
+using System.Threading;
+
+namespace COMPortBrdigeLib
+{
+    public class ComPortBridge : IDisposable
+    {
+        private SerialPort port1;
+        private SerialPort port2;
+        private Thread bridgeThread;
+        private bool isRunning;
+
+        // 新增：重試參數
+        private const int RetryCount = 3;
+        private const int RetryDelayMs = 1000;
+
+        // 新增：資料接收事件
+        public event Action<string> DataTransmitted;
+        public event Action<string> DataReceived;
+
+        public ComPortBridge(string portName1, string portName2, string baudRate)
+        {
+            TryClosePort(portName1);
+            TryClosePort(portName2);
+
+            int baud = int.Parse(baudRate);
+
+            port1 = new SerialPort(portName1, baud, Parity.None, 8, StopBits.One);
+            port2 = new SerialPort(portName2, baud, Parity.None, 8, StopBits.One);
+            
+            port1.Encoding = Encoding.ASCII;
+            port2.Encoding = Encoding.ASCII;
+            
+            port1.ReadTimeout = 100;
+            port2.ReadTimeout = 100;
+        }
+
+        private static void TryClosePort(string portName)
+        {
+            try
+            {
+                // 檢查 Port 是否存在
+                if (!SerialPort.GetPortNames().Contains(portName))
+                {
+                    Console.WriteLine($"[Bridge] Port {portName} does not exist");
+                    return;
+                }
+                
+                // 嘗試開啟並立即關閉，釋放資源
+                using (SerialPort tempPort = new SerialPort(portName))
+                {
+                    if (tempPort.IsOpen)
+                    {
+                        tempPort.Close();
+                        Console.WriteLine($"[Bridge] Closed residual port: {portName}");
+                    }
+                }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                Console.WriteLine($"[Bridge] Port {portName} is in use by another process");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Bridge] Error checking port {portName}: {ex.Message}");
+            }
+        }
+        private bool OpenPortWithRetry(SerialPort port, string portName)
+        {
+            for (int i = 0; i < RetryCount; i++)
+            {
+                try
+                {
+                    if (!port.IsOpen)
+                    {
+                        port.Open();
+                        Console.WriteLine($"[Bridge] Opened {portName} successfully");
+                        return true;
+                    }
+                    return true;
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    Console.WriteLine($"[Bridge] Port {portName} is in use, attempt {i + 1}/{RetryCount}");
+                    
+                    if (i < RetryCount - 1)
+                    {
+                        // 嘗試釋放
+                        TryClosePort(portName);
+                        
+                        // 等待後重試
+                        Thread.Sleep(RetryDelayMs);
+                    }
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine($"[Bridge] Port {portName} IO error: {ex.Message}");
+                    
+                    if (i < RetryCount - 1)
+                    {
+                        Thread.Sleep(RetryDelayMs);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[Bridge] Error opening {portName}: {ex.Message}");
+                    return false;
+                }
+            }
+            
+            return false;
+        }
+
+        public void Start()
+        {
+            if (isRunning) return;
+
+            try
+            {
+                // ✅ 修改：使用帶重試的開啟機制
+                bool port1Opened = OpenPortWithRetry(port1, port1.PortName);
+                bool port2Opened = OpenPortWithRetry(port2, port2.PortName);
+                
+                if (!port1Opened || !port2Opened)
+                {
+                    throw new IOException($"Failed to open ports after {RetryCount} attempts.\n" +
+                                        $"Port1 ({port1.PortName}): {(port1Opened ? "OK" : "FAILED")}\n" +
+                                        $"Port2 ({port2.PortName}): {(port2Opened ? "OK" : "FAILED")}\n\n" +
+                                        "Possible solutions:\n" +
+                                        "1. Close any other programs using these COM ports\n" +
+                                        "2. Restart com0com service\n" +
+                                        "3. Reboot your computer");
+                }
+
+                isRunning = true;
+
+                bridgeThread = new Thread(BridgeData);
+                bridgeThread.IsBackground = true;
+                bridgeThread.Start();
+
+                Console.WriteLine($"Bridge started: {port1.PortName} <-> {port2.PortName}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error starting bridge: {ex.Message}");
+                Stop();
+                throw;
+            }
+        }
+
+        private void BridgeData()
+        {
+            byte[] buffer1 = new byte[4096];
+            byte[] buffer2 = new byte[4096];
+
+            while (isRunning)
+            {
+                try
+                {
+                    // Port1 (實體) -> Port2 (虛擬): 接收資料 (RX)
+                    if (port1.IsOpen && port1.BytesToRead > 0)
+                    {
+                        int bytesRead = port1.Read(buffer1, 0, Math.Min(buffer1.Length, port1.BytesToRead));
+                        if (bytesRead > 0)
+                        {
+                            port2.Write(buffer1, 0, bytesRead);
+                            
+                            // 觸發 RX 事件
+                            string data = System.Text.Encoding.ASCII.GetString(buffer1, 0, bytesRead);
+                            DataReceived?.Invoke(data);
+                            Console.WriteLine($"[RX] {bytesRead} bytes from {port1.PortName}");
+                        }
+                    }
+
+                    // Port2 (虛擬) -> Port1 (實體): 傳送資料 (TX)
+                    if (port2.IsOpen && port2.BytesToRead > 0)
+                    {
+                        int bytesRead = port2.Read(buffer2, 0, Math.Min(buffer2.Length, port2.BytesToRead));
+                        if (bytesRead > 0)
+                        {
+                            port1.Write(buffer2, 0, bytesRead);
+                            
+                            // 觸發 TX 事件
+                            string data = System.Text.Encoding.ASCII.GetString(buffer2, 0, bytesRead);
+                            DataTransmitted?.Invoke(data);
+                            Console.WriteLine($"[TX] {bytesRead} bytes to {port1.PortName}");
+                        }
+                    }
+
+                    Thread.Sleep(10);  // 減少 CPU 使用率
+                }
+                catch (TimeoutException)
+                {
+                    // 正常的 timeout，繼續
+                }
+                catch (Exception ex)
+                {
+                    if (isRunning)
+                    {
+                        Console.WriteLine($"[Bridge Error] {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 發送資料到實體設備（透過 Port1）
+        /// </summary>
+        public void SendData(string data)
+        {
+            if (!isRunning || !port1.IsOpen)
+                throw new InvalidOperationException("Bridge is not running or port1 is not open");
+
+            try
+            {
+                port1.Write(data);
+                Console.WriteLine($"[Bridge->Device] {data}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending data: {ex.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 發送資料到 Tera Term（透過 Port2）
+        /// </summary>
+        public void SendToTerminal(string data)
+        {
+            if (!isRunning || !port2.IsOpen)
+                throw new InvalidOperationException("Bridge is not running or port2 is not open");
+
+            try
+            {
+                port2.Write(data);
+                Console.WriteLine($"[Bridge->Terminal] {data}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending data to terminal: {ex.Message}");
+                throw;
+            }
+        }
+
+        private void ClosePortSafely(SerialPort port)
+        {
+            if (port == null)
+                return;
+                
+            try
+            {
+                if (port.IsOpen)
+                {
+                    // 丟棄緩衝區資料
+                    port.DiscardInBuffer();
+                    port.DiscardOutBuffer();
+                    
+                    // 關閉 Port
+                    port.Close();
+                    
+                    Console.WriteLine($"[Bridge] Closed {port.PortName}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Bridge] Error closing {port.PortName}: {ex.Message}");
+            }
+            
+            // 等待一下確保系統釋放資源
+            Thread.Sleep(100);
+        }
+
+        public void Stop()
+        {
+            isRunning = false;
+
+            // ✅ 修改：加入 timeout 機制
+            if (bridgeThread != null && bridgeThread.IsAlive)
+            {
+                if (!bridgeThread.Join(2000)) // 2 seconds timeout
+                {
+                    try
+                    {
+                        bridgeThread.Abort();
+                        Console.WriteLine("[Bridge] Thread aborted due to timeout");
+                    }
+                    catch { }
+                }
+            }
+
+            // ✅ 修改：使用安全關閉方法
+            ClosePortSafely(port1);
+            ClosePortSafely(port2);
+
+            Console.WriteLine("Bridge stopped");
+        }
+
+        private bool disposed = false;
+        public void Dispose()
+        {
+            // ✅ 修改：避免重複釋放
+            if (disposed)
+                return;
+
+            Stop();
+            
+            try
+            {
+                port1?.Dispose();
+                port2?.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Bridge] Error disposing: {ex.Message}");
+            }
+
+            disposed = true;
+            Console.WriteLine("[Bridge] Disposed");
+        }
+
+        public bool IsRunning => isRunning;
+
+        ~ComPortBridge()
+        {
+            Dispose();
+        }
+    }
+}
