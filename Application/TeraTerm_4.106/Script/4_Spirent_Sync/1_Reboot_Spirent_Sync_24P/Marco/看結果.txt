@@ -1,0 +1,10 @@
+telnet 127.0.0.1 12345
+set output nopause
+shell-execute linespeed_stop
+shell-execute linespeed_show
+shell-execute linespeed_end
+dbg event-table show device 0 eventType CPSS_PP_EVENTS
+CLIexit
+cat /tmp/appDemo_stdout
+echo "" > /tmp/appDemo_stdout
+

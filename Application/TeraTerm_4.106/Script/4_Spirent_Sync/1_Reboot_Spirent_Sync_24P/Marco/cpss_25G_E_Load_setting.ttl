@@ -1,0 +1,71 @@
+if sku_setting = 24 then
+	wait prompt_diag
+	sendln "telnet 127.0.0.1 12345"
+	wait prompt_cpss
+	sendln "configure"
+	wait prompt_config
+	sendln "interface range ethernet 0/24-27"
+	wait prompt_config_if
+	sendln "no speed"
+	wait prompt_config_if
+	sendln "802.3ap advertisement 25000 CR both_fec both_fec interconnect profile default"
+	wait prompt_config_if
+	sendln "no shutdown"
+	wait prompt_config_if
+	sendln "end"
+	wait prompt_cpss
+	sendln "configure"
+	wait prompt_config
+	sendln "interface range ethernet 0/24-27"
+	wait prompt_config_if
+	sendln "no speed"
+	wait prompt_config_if
+	sendln "auto-tune start trx-training"
+	wait prompt_config_if
+	sendln "speed 25000 mode CR"
+	wait prompt_config_if
+	sendln "no shutdown"
+	wait prompt_config_if
+	sendln "end"
+	wait prompt_cpss
+	sendln "do show interfaces status ethernet 0/24-27"
+	wait prompt_cpss
+	sendln "CLIexit"
+	wait prompt_diag
+	sendln "echo ====== Complete setting 25G_E_Load for 24P ======"
+elseif sku_setting = 48 then
+	wait prompt_diag
+	sendln "telnet 127.0.0.1 12345"
+	wait prompt_cpss
+	sendln "configure"
+	wait prompt_config
+	sendln "interface range ethernet 0/48-55"
+	wait prompt_config_if
+	sendln "no speed"
+	wait prompt_config_if
+	sendln "802.3ap advertisement 25000 CR both_fec both_fec interconnect profile default"
+	wait prompt_config_if
+	sendln "no shutdown"
+	wait prompt_config_if
+	sendln "end"
+	wait prompt_cpss
+	sendln "configure"
+	wait prompt_config
+	sendln "interface range ethernet 0/48-55"
+	wait prompt_config_if
+	sendln "no speed"
+	wait prompt_config_if
+	sendln "auto-tune start trx-training"
+	wait prompt_config_if
+	sendln "speed 25000 mode CR"
+	wait prompt_config_if
+	sendln "no shutdown"
+	wait prompt_config_if
+	sendln "end"
+	wait prompt_cpss
+	sendln "do show interfaces status ethernet 0/48-55"
+	wait prompt_cpss
+	sendln "CLIexit"
+	wait prompt_diag
+	sendln "echo ====== Complete setting 25G_E_Load ======"
+endif

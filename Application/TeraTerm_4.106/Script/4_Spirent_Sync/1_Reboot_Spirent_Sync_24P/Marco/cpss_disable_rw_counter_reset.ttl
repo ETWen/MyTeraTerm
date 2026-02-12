@@ -1,0 +1,120 @@
+	prompt_str2 = 'Console#'
+	wait prompt_str2
+	sendln "set output nopause"
+
+	;Disable Read and clear MAC counter
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 0 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 1 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 2 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 3 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 4 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 5 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 6 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 7 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 8 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 9 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 10 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 11 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 12 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 13 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 14 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 15 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 16 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 17 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 18 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 19 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 20 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 21 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 22 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 23 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 24 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 25 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 26 enable false"
+	wait prompt_str2
+	sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 27 enable false"
+	wait prompt_str2
+
+	if sku_setting = 48 then
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 28 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 29 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 30 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 31 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 32 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 33 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 34 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 35 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 36 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 37 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 38 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 39 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 40 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 41 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 42 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 43 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 44 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 45 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 46 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 47 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 48 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 49 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 50 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 51 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 52 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 53 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 54 enable false"
+		wait prompt_str2
+		sendln "do cpss-api call cpssDxChPortMacCountersClearOnReadSet devNum 0 portNum 55 enable false"
+		wait prompt_str2
+	endif

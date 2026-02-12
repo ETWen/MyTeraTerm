@@ -1,0 +1,93 @@
+prompt_cpss = 'Console#'
+
+sendln "Global PCS Clock and Reset Control Register"
+wait prompt_cpss
+sendln "// lane[0]"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x24800004"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x24800004 mask 0x9 data 0x0"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x24800004 mask 0x9 data 0x9"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x24800004"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+
+sendln "// lane[1]"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x25000004"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x25000004 mask 0x9 data 0x0"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x25000004 mask 0x9 data 0x9"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x25000004"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+
+sendln "// lane[2]"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x25800004"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x25800004 mask 0x9 data 0x0"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x25800004 mask 0x9 data 0x9"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x25800004"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+
+sendln "// lane[3]"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x26800004"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x26800004 mask 0x9 data 0x0"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x26800004 mask 0x9 data 0x9"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x26800004"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+
+sendln "// lane[4]"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x27000004"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x27000004 mask 0x9 data 0x0"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x27000004 mask 0x9 data 0x9"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x27000004"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+
+sendln "// lane[5]"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x27800004"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x27800004 mask 0x9 data 0x0"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss
+sendln "dbg register write device 0 offset 0x27800004 mask 0x9 data 0x9"
+wait prompt_cpss
+sendln "dbg register read device 0 offset 0x27800004"
+wait prompt_cpss
+sendln "sleep 200"
+wait prompt_cpss

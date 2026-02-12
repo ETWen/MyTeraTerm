@@ -1,0 +1,14 @@
+prompt_str2 = 'Console#'
+;prompt_log_str1 = 'Type <CR> to continue, Q<CR> to stop:'
+
+
+
+for i 0 55
+	idx = i
+	sprintf2 cmd "show interfaces mac counters ethernet 0/%d" idx
+	sendln cmd
+	sendln ""
+	wait prompt_str2
+next
+
+

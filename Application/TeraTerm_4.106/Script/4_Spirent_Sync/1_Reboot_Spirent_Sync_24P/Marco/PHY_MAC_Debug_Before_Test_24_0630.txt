@@ -1,0 +1,435 @@
+
+//As for PHY check, 
+//After the link is up:
+
+//Write:
+//SET 4.F00A bit 2 = 1
+//SET 4.F00A bit 1 = 1
+//SET 4.F00A bit 0 = 1
+//SET 3.8030 BIT 1 = 1
+
+//Write:
+//SET 4.F00A bit 2 = 1
+//SET 4.F00A bit 1 = 1
+//SET 4.F00A bit 0 = 1
+//Port 1-24
+debug
+xsmi register write device 0 portgroup 0 interface 1 address 0x0 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x1 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x2 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x3 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x4 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x5 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x6 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x7 register 0xF00A phydev 4 data 0x02af
+
+xsmi register write device 0 portgroup 0 interface 1 address 0x8 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x9 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0xa register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0xb register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0xc register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0xd register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0xe register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0xf register 0xF00A phydev 4 data 0x02af
+
+xsmi register write device 0 portgroup 0 interface 1 address 0x10 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x11 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x12 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x13 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x14 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x15 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x16 register 0xF00A phydev 4 data 0x02af
+xsmi register write device 0 portgroup 0 interface 1 address 0x17 register 0xF00A phydev 4 data 0x02af
+end
+
+//SET 3.8030 BIT 1 = 1
+//Port 1-24
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x1 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x2 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x3 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x4 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x5 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x6 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x7 register 0x8030 phydev 3 data 0x2
+
+xsmi register write device 0 portgroup 0 interface 1 address 0x8 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x9 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0xa register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0xb register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0xc register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0xd register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0xe register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0xf register 0x8030 phydev 3 data 0x2
+
+xsmi register write device 0 portgroup 0 interface 1 address 0x10 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x11 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x12 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x13 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x14 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x15 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x16 register 0x8030 phydev 3 data 0x2
+xsmi register write device 0 portgroup 0 interface 1 address 0x17 register 0x8030 phydev 3 data 0x2
+end
+
+
+//Read and Clear these registers (instructions mentioned in DS):
+//LINE SIDE
+//RX error
+//3.800a
+//3.800b
+
+//Port 1-24
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x800a phydev 3 
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x800a phydev 3 
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x800a phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x800a phydev 3 
+end
+
+
+//LINE SIDE
+//RX error
+//3.800b
+//Port 1-24
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x800b phydev 3
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x800b phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x800b phydev 3
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x800b phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x800b phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x800b phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x800b phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x800b phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x800b phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x800b phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x800b phydev 3 
+end
+
+
+
+//RX Packet Error
+//3.803e
+//3.803f
+
+//Port 1-24
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x800e phydev 3 
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x800e phydev 3 
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x800e phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x800e phydev 3 
+end
+
+
+//LINE SIDE
+//RX Packet Error
+//3.800f
+//Port 1-24
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x800f phydev 3
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x800f phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x800f phydev 3
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x800f phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x800f phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x800f phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x800f phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x800f phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x800f phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x800f phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x800f phydev 3 
+end
+
+
+
+
+
+
+
+//SERDES SIDE
+//4.F027 - SERDES RX ERROR
+
+//SERDES SIDE
+//4.F027 - SERDES RX ERROR
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0xF027 phydev 4
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0xF027 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0xF027 phydev 4
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0xF027 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0xF027 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0xF027 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0xF027 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0xF027 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0xF027 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0xF027 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0xF027 phydev 4 
+end
+
+//Port Link DROP
+//T-UNIT LINk DROP CONTROL
+//1.0xc055
+//bit0: 1:Enable 0: disable
+//bit2: clear mode 1:read and clear 0: disable
+//bit3: clear count 1: clear
+
+//1.0xc056
+//T-UNIT LINk DROP Count
+
+
+
+//T-UNIT LINk DROP CONTROL
+//1.0xc055
+
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0xc055 phydev 1
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0xc055 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0xc055 phydev 1
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0xc055 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0xc055 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0xc055 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0xc055 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0xc055 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0xc055 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0xc055 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0xc055 phydev 1 
+end
+
+
+
+//T-UNIT LINk DROP Count
+//1.0xc056
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0xc056 phydev 1
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0xc056 phydev 1
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0xc056 phydev 1
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0xc056 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0xc056 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0xc056 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0xc056 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0xc056 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0xc056 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0xc056 phydev 1 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0xc056 phydev 1 
+end
+
+
+//H-UNIT LINk DROP Count
+//4.0xF02A
+
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0xF02A phydev 4
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0xF02A phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0xF02A phydev 4
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0xF02A phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0xF02A phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0xF02A phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0xF02A phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0xF02A phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0xF02A phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0xF02A phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0xF02A phydev 4 
+end
+
+
+
+//T-Unit 
+//Copper Specific Interrupt Register
+//3.8011
+
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x8011 phydev 3
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x8011 phydev 3
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x8011 phydev 3
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x8011 phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x8011 phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x8011 phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x8011 phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x8011 phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x8011 phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x8011 phydev 3 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x8011 phydev 3 
+end
+
+
+//H-Unit 
+//10GBASE-R Interrupt Status Register
+//4.9001
+
+
+debug
+xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x9001 phydev 4
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x9001 phydev 4
+xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x9001 phydev 4
+
+xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x9001 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x9001 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x9001 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x9001 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x9001 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x9001 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x9001 phydev 4 
+xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x9001 phydev 4 
+end

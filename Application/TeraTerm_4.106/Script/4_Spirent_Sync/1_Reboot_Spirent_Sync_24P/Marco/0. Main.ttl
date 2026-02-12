@@ -1,0 +1,94 @@
+/*
+strdim COMary 256
+for i 0 255
+		sprintf2 str_COM 'COM%d' i
+        COMary[i] = str_COM
+next
+listbox 'Select your COM Port' 'Confirmation' COMary
+
+sprintf2 str_connect_info '/C=%d, /BAUD=115200' result
+*/
+
+connect '/C=26, /BAUD=115200'
+prompt_diag = 'root@(none):/#'
+prompt_cpss = 'Console#'
+prompt_config = 'Console(config)#'
+prompt_config_if = 'Console(config-if)#'
+prompt_config_vlan = 'Console(config-vlan)#'
+
+sku_setting = 24
+eye_scan_en = 0
+H_T_units_en = 1
+fail_cotinue_en = 1   ;Stop = 0, Continue = 1
+Mido_SPI_Sel = 1      ;Mdio = 1, SPI =0 
+
+
+cnt_total = 0
+
+strdim ports_add 24
+
+sprintf2 Mido_SPI_String '4c do shell-execute appDemoDbEntryAdd "init_mdio", %d' Mido_SPI_Sel
+
+;while 1
+	sendln ""
+	wait prompt_diag
+	sendln "reboot"
+	pause 5
+	wait "Welcome to Accton diagnostic!"
+
+	wait prompt_diag
+	send 'sed -i '
+	send 39
+	send Mido_SPI_String
+	send 39
+	send ' /usr/local/bin/config.txt'
+	sendln ""
+
+	wait prompt_diag
+	sendln "acc_scy_tpm"
+	include 'Setting.ttl'
+
+	; === 25G mode setting ===
+	if Sel_25G_mode = 0 then
+		;25G_AOC mode
+		include 'cpss_25G_AOC_setting.ttl'
+	elseif Sel_25G_mode = 1 then
+		;25G_DAC mode
+		include 'cpss_25G_DAC_setting.ttl'
+	elseif Sel_25G_mode = 2 then
+		;25G_E_Load mode
+		include 'cpss_25G_E_Load_setting.ttl'
+	else
+		wait prompt_diag
+		sendln "echo ====== Sel_25G_mode default setting (E-Load)======"
+	endif
+
+	; === Recover CLK setting ===
+	if Recover_CLK_EN = 1 then
+
+		include 'recover_CLK_setting.ttl'
+	elseif Recover_CLK_EN = 0 then
+		sendln "echo ====== No Setting Recover_CLK ======"
+	endif
+
+	; === Vlan setting ===
+	if Vlan_setting_EN = 1 then
+		include 'cpss_vlan_setting.ttl'
+	elseif Vlan_setting_EN = 0 then
+		sendln "echo ====== No Setting Vlan ======"
+	endif
+
+	include 'Status.ttl'
+
+	wait prompt_diag
+	sendln "telnet 127.0.0.1 12345"
+	include "cpss_disable_rw_counter_reset.ttl"
+	sendln "echo ====== Ready to do the Packet Start ======"
+	disconnect
+	closett
+;endwhile
+
+
+
+
+

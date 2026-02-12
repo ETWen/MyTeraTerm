@@ -1,0 +1,312 @@
+prompt_cpss = 'Console#'
+
+	
+	if sku_setting = 24 then
+		;H-unit Rx counter clear Port 1-24
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x0 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x1 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x2 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x3 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x4 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x5 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x6 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x7 register 0xF010 phydev 0x4 data 0xA101"
+		
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x8 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x9 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xa register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xb register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xc register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xd register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xe register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xf register 0xF010 phydev 0x4 data 0xA101"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x10 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x11 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x12 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x13 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x14 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x15 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x16 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x17 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+
+		;T-unit Rx counter clear Port 1-24"
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x0 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x1 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x2 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x3 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x4 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x5 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x6 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x7 register 0xdca0 phydev 0x3 data 0x107"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x8 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x9 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xa register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xb register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xc register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xd register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xe register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xf register 0xdca0 phydev 0x3 data 0x107"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x10 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x11 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x12 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x13 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x14 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x15 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x16 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x17 register 0xdca0 phydev 0x3 data 0x107"
+
+	elseif sku_setting =48 then
+		;H-unit Rx counter clear Port 1-48
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x0 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x1 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x2 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x3 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x4 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x5 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x6 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x7 register 0xF010 phydev 0x4 data 0xA101"
+		
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x8 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x9 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xa register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xb register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xc register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xd register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xe register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xf register 0xF010 phydev 0x4 data 0xA101"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x10 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x11 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x12 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x13 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x14 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x15 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x16 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x17 register 0xF010 phydev 0x4 data 0xA101"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x0 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x1 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x2 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x3 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x4 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x5 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x6 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x7 register 0xF010 phydev 0x4 data 0xA101"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x8 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x9 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xa register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xb register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xc register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xd register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xe register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xf register 0xF010 phydev 0x4 data 0xA101"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x10 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x11 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x12 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x13 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x14 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x15 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x16 register 0xF010 phydev 0x4 data 0xA101"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x17 register 0xF010 phydev 0x4 data 0xA101"
+
+		;T-unit Rx counter clear Port 1-48
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x0 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x1 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x2 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x3 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x4 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x5 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x6 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x7 register 0xdca0 phydev 0x3 data 0x107"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x8 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x9 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xa register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xb register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xc register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xd register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xe register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0xf register 0xdca0 phydev 0x3 data 0x107"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x10 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x11 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x12 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x13 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x14 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x15 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x16 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 1 address 0x17 register 0xdca0 phydev 0x3 data 0x107"
+
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x0 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x1 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x2 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x3 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x4 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x5 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x6 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x7 register 0xdca0 phydev 0x3 data 0x107"
+
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x8 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x9 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xa register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xb register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xc register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xd register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xe register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0xf register 0xdca0 phydev 0x3 data 0x107"
+
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x10 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x11 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x12 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x13 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x14 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x15 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x16 register 0xdca0 phydev 0x3 data 0x107"
+		wait prompt_cpss
+		sendln "dbg xsmi register write device 0 portgroup 0 interface 0 address 0x17 register 0xdca0 phydev 0x3 data 0x107"
+	else
+		sendln "echo ====== Error : Type the wrong sku number ======"
+	endif

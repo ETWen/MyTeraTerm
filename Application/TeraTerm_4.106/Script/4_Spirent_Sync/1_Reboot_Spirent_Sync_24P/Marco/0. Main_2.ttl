@@ -1,0 +1,33 @@
+connect '/C=26, /BAUD=115200'
+prompt_diag = 'root@(none):/#'
+prompt_cpss = 'Console#'
+prompt_config = 'Console(config)#'
+prompt_config_if = 'Console(config-if)#'
+prompt_config_vlan = 'Console(config-vlan)#'
+
+sku_setting = 24
+
+;Log
+gettime timestr "%Y%m%d-%H%M%S"
+getdir mdir
+sprintf2 filename '%s\ AC5P_Reboot_sync_Spirent_test_%dP_%s.log' mdir sku_setting timestr
+logopen filename 0 1 1 1
+
+sendln ""
+wait  prompt_cpss
+sendln "set output nopause"
+if sku_setting =24 then
+	include "counter_log_24.ttl"
+elseif sku_setting = 48 then
+	include "counter_log_48.ttl"
+endif
+
+sendln "CLIexit"
+wait "Connection closed by foreign host"
+
+wait prompt_diag
+sendln "echo -e =============Done======================="
+
+disconnect
+closett
+

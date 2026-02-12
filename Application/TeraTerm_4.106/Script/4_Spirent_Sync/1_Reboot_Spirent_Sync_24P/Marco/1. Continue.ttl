@@ -1,0 +1,145 @@
+prompt_diag = 'root@(none):/#'
+prompt_cpss = 'Console#'
+prompt_config = 'Console(config)#'
+prompt_config_if = 'Console(config-if)#'
+prompt_config_vlan = 'Console(config-vlan)#'
+
+sku_setting = 24
+
+LineSpeed_EN = 1
+
+if LineSpeed_EN = 1 then
+
+	;=== 1st 30sec test ===
+	wait prompt_diag
+	sendln "telnet 127.0.0.1 12345"
+	wait prompt_cpss
+	sendln "set output nopause"
+	wait prompt_cpss
+	sendln "show interfaces status all"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_init"
+	wait prompt_cpss
+	if sku_setting = 24 then
+		sendln "shell-execute linespeed_config 1 28 1"
+	elseif sku_setting =48 then
+		sendln "shell-execute linespeed_config 1 56 1"
+	else
+		sendln "echo ====== Error : Type the wrong sku number ======"
+	endif
+	;packet 內容: size 1518, payload 0xaa , 測試時間30秒，使用的packet 數量10個
+	sendln "shell-execute linespeed_pkt_config_set 1518 0xAA 30 10"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_pkt_config_set_88e2580 6"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_pkt_config_set_25g_ports 60"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_pkt_config_set_5g_ports 8"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_run"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_stop"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_show"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_end"
+	wait prompt_cpss
+	sendln "CLIexit"
+	wait "Connection closed by foreign host"
+	wait prompt_diag
+	sendln "cat /tmp/appDemo_stdout"
+	wait "luaShellExecute: linespeed_end"
+	wait prompt_diag
+	sendln 'echo "" > /tmp/appDemo_stdout'
+	wait prompt_diag
+	sendln "echo ====== Complete the 1st Linespeed test ======"
+
+	;=== Testing ===
+	wait prompt_diag
+	sendln "telnet 127.0.0.1 12345"
+	wait prompt_cpss
+	sendln "set output nopause"
+	wait prompt_cpss
+	sendln "show interfaces status all"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_init"
+	wait prompt_cpss
+	if sku_setting = 24 then
+		sendln "shell-execute linespeed_config 1 28 1"
+	elseif sku_setting =48 then
+		sendln "shell-execute linespeed_config 1 56 1"
+	else
+		sendln "echo ====== Error : Type the wrong sku number ======"
+	endif
+	wait prompt_cpss
+	;packet 內容: size 1518, payload 0xaa , 測試時間10秒，使用的packet 數量10個
+	sendln "shell-execute linespeed_pkt_config_set 1518 0xAA 30 10"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_pkt_config_set_88e2580 6"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_pkt_config_set_25g_ports 60"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_pkt_config_set_5g_ports 8"
+	wait prompt_cpss
+	sendln "shell-execute linespeed_run"
+	wait prompt_cpss
+	sendln "dbg event-table clear device 0 eventType CPSS_PP_EVENTS"
+	wait prompt_cpss
+	sendln "dbg event-table show device 0 eventType CPSS_PP_EVENTS"
+	wait prompt_cpss
+	sendln "CLIexit"
+	wait "Connection closed by foreign host"
+	wait prompt_diag
+
+
+	while 1
+		;Test Port
+		sendln "acc_fs_usb rw"
+		wait prompt_diag
+		sendln "acc_net_cpu traffic mgmtp"
+		wait prompt_diag
+		sendln "1pps-test"
+		wait prompt_diag
+
+
+		;Status Show
+		if sku_setting = 24 then
+			sendln "ucd90160_24_autotest.sh"
+		elseif sku_setting =48 then
+			sendln "ucd90160_48_autotest.sh"
+		else
+			sendln "echo ====== Error : Type the wrong sku number ======"
+		endif
+
+		sendln "thermal_fan"
+		wait prompt_diag
+		sendln "acc_cool_fan status"
+		wait prompt_diag
+		sendln "acc_e2p_psu info"
+		wait prompt_diag
+		sendln "acc_iai_i2c_device"
+		wait prompt_diag
+		sendln "acc_temp_thermal all"
+		wait prompt_diag
+		sendln "tipoe get totalconsumpwr"
+		wait prompt_diag
+		sendln "tipoe get pwrconsum all"
+		wait prompt_diag
+
+		;CPSS EVENT Show
+		sendln "telnet 127.0.0.1 12345"
+		wait prompt_cpss
+		sendln "dbg event-table show device 0 eventType CPSS_PP_EVENTS"
+		wait prompt_cpss
+		sendln "CLIexit"
+		wait "Connection closed by foreign host"
+		wait prompt_diag
+	endwhile
+
+	
+endif
+
+
+
+
+

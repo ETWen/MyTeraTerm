@@ -1,0 +1,4 @@
+#
+# known_hosts file for TTSSH(An SSH Extension to Tera Term)
+#
+192.168.2.44 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE3B2EPz32LBApqG9PRBsfwfjguEOeK8x+qPbwaEAx0YOVuLAVPctWQ5Sbc2b2PAsPlMpaVZT1fgzwUqj5FiPlE=

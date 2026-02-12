@@ -1,0 +1,52 @@
+;====== Show Platform status ======
+;Version
+wait prompt_diag
+sendln "version"
+
+;UCD90160
+wait prompt_diag
+if sku_setting = 24 then
+	sendln "ucd90160_24_autotest.sh"
+elseif sku_setting =48 then
+	sendln "ucd90160_48_autotest.sh"
+endif
+
+;FAN
+wait prompt_diag
+sendln "acc_cool_fan status"
+
+;PSU_status
+wait prompt_diag
+sendln "acc_e2p_psu info"
+
+;I2C_status
+wait prompt_diag
+sendln "acc_iai_i2c device"
+
+;Thernal sensor 
+wait prompt_diag
+sendln "acc_temp_thermal all"
+
+;PoE status
+;wait prompt_diag
+;sendln "tipoe get totalconsumpwr"
+;wait prompt_diag
+;sendln "tipoe get pwrconsum all"
+
+;1PPS
+;wait prompt_diag
+;sendln "1pps-test"
+
+;USB
+;wait prompt_diag
+;sendln "acc_fs_usb rw"
+
+;MGMT
+;wait prompt_diag
+;sendln "test-mgmt-wa eth2 1000M"
+;wait prompt_diag
+;sendln "echo $?"
+
+;==================================
+
+

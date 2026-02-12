@@ -1,0 +1,52 @@
+;============================================================
+;==================== Script Tool Setting ===================
+;============================================================
+;Setting Platform (24 or 48)
+sku_setting = 24
+
+;==================== Platform setting ======================
+;Fan Speed (%)
+fan_PWM = 40
+
+;DAC AOC E-Load Selcect
+;Sel_25G_mode = 0	25G_AOC
+;Sel_25G_mode = 1	25G_DAC
+;Sel_25G_mode = 2	25G_E_Load
+;Sel_25G_mode = 3	Default
+Sel_25G_mode = 2
+
+;Vlan_Setting (0: Disable, 1: Enable )
+Vlan_setting_EN = 0
+
+;Recover Clock setting
+Recover_CLK_EN = 0
+
+
+;;==================== Test item setting ====================
+LineSpeed_EN = 1
+
+;Packet Gen mode (0: Disable, 1: Enable , Vlan need enable)
+Packet_Gen_EN = 0
+
+;============================================================
+;============================================================
+;============================================================
+;Show Platform S/N
+wait prompt_diag
+sendln "tlvinfo-r.sh 1 0x57"
+
+
+;Setting the FAN speed
+wait prompt_diag
+sendln "thermal_fan"
+;sendln "acc_cool_fan speed 30"
+
+;Init CPSS
+pause 1
+wait prompt_diag
+sendln "swutil -C -S"
+
+;tx_disable off
+wait prompt_diag
+sendln "acc_trcv_sfp tx_disable off"
+

@@ -1,0 +1,764 @@
+prompt_str1 = 'root@(none):/#'
+prompt_str2 = 'Console#'
+prompt_str3 = 'Console(config)#'
+prompt_str4 = 'Console(config-if)#'
+prompt_str5 = 'Console(config-vlan)#'
+
+if sku_setting =24 then
+		wait prompt_str1
+		sendln "telnet 127.0.0.1 12345"
+		wait prompt_str2
+		sendln "set output nopause"
+		wait prompt_str2
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface range ethernet 0/0-27,63"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+		sendln "show vlan device 0"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 101"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/1-2"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 101 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 101"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 102"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/3-4"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 102 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 102"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 103"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/5-6"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 103 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 103"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 104"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/7-8"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 104 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 104"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 105"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/9-10"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 105 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 105"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 106"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/11-12"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 106 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 106"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 107"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/13-14"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 107 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 107"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 108"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/15-16"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 108 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 108"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 109"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/17-18"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 109 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 109"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 110"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/19-20"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 110 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 110"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 111"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/21-22"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 111 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 111"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 112"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/23,0"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 112 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 112"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 201"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/25,26"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 201 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 201"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 202"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/27,24"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 202 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 202"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+		sendln "show vlan device 0"
+		wait prompt_str2
+		sendln "CLIexit"
+		wait prompt_str1
+		sendln "echo ====== Complete setting Vlan  for 24P ======"		
+elseif sku_setting = 48 then
+		wait prompt_str1
+		sendln "telnet 127.0.0.1 12345"
+		wait prompt_str2
+		sendln "set output nopause"
+		wait prompt_str2
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface range ethernet 0/0-55,63"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+		sendln "show vlan device 0"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 101"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/1-2"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 101 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 101"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 102"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/3-4"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 102 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 102"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 103"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/5-6"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 103 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 103"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 104"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/7-8"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 104 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 104"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 105"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/9-10"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 105 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 105"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 106"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/11-12"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 106 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 106"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 107"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/13-14"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 107 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 107"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 108"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/15-16"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 108 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 108"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 109"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/17-18"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 109 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 109"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 110"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/19-20"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 110 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 110"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 111"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/21-22"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 111 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 111"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 112"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/23-24"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 112 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 112"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 113"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/25-26"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 113 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 113"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 114"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/27-28"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 114 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 114"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 115"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/29-30"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 115 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 115"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 116"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/31,0"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 116 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 116"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 201"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/33-34"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 201 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 201"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 202"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/35-36"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 202 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 202"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 203"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/37-38"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 203 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 203"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 204"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/39-40"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 204 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 204"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 205"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/41-42"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 205 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 205"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 206"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/43-44"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 206 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 206"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 207"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/45-46"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 207 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 207"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 208"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/47,32"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 208 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 208"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 209"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/49-50"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 209 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 209"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 210"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/51-52"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 210 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 210"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 211"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/53-54"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 211 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 211"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+
+		sendln "configure"
+		wait prompt_str3
+		sendln "interface vlan device 0 vid 212"
+		wait prompt_str5
+		sendln "exit"
+		wait prompt_str3
+		sendln "interface range ethernet 0/55,48"
+		wait prompt_str4
+		sendln "switchport allowed vlan remove 1"
+		wait prompt_str4
+		sendln "switchport allowed vlan add 212 untagged"
+		wait prompt_str4
+		sendln "switchport pvid 212"
+		wait prompt_str4
+		sendln "end"
+		wait prompt_str2
+		sendln "show vlan device 0"
+		wait prompt_str2
+		sendln "CLIexit"
+		sendln "echo ====== Complete setting Vlan for 48P======"
+endif
+
+

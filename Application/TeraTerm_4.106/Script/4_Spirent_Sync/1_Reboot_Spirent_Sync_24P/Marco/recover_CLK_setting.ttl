@@ -1,0 +1,112 @@
+if sku_setting = 24 then
+	wait prompt_diag
+	sendln "telnet 127.0.0.1 12345"
+	;Check the Port Link up
+	timeout=3
+	sendln "show interfaces status ethernet 0/24"
+	wait "Link-Up"
+	if result=0 then
+		sendln "echo -e Error:SFP Port24 Link down. Check and type the command Solve"
+		timeout=0
+		wait "Error in command line: Solve."
+	elseif result=1 then
+		sendln "echo -e SFP Port24 Link up."
+	endif
+	timeout=0
+
+	;//8A34002
+	wait prompt_cpss
+	sendln "CLIexit"
+	wait prompt_diag
+	sendln "i2cset 1 0x77 1"
+	wait prompt_diag
+	sendln "i2cset 1 0x58 0xFC 0xC000 w"
+
+	;//確認8A34002的IN0是否有lock, 0x77顯示未lock
+	wait prompt_diag
+	timeout=3
+	sendln "i2cget 1 0x58 0x44"
+	wait "0x77"
+	if result=0 then
+		sendln "echo -e 8A34002 IN0 have been locked"
+	elseif result=1 then
+		sendln "echo -e Error: 8A34002 not locked. Check and type the command Solve"
+		timeout=0
+		wait "Solve: not found"
+	endif
+	timeout=0
+
+	;//Enable MAC recovered clock( 24 代表port 25)
+	wait prompt_diag
+	sendln "setting_mac_rclk.expect 24 true CPSS_DXCH_PORT_SYNC_ETHER_RECOVERY_CLK0_E CPSS_DXCH_PORT_SYNC_ETHER_RECOVERY_CLOCK_SELECT_0_E"
+
+	;// 確認8A34002的IN0是否有lock, 0x76 or 0x72 or 0x70代表有lock
+	wait prompt_diag
+	timeout=3
+	sendln "i2cget 1 0x58 0x44"
+	wait "0x76" "0x72" "0x70"
+	if result=0 then
+		sendln "echo -e Error: 8A34002 not locked. Check and type the command Solve"
+		timeout=0
+		wait "Solve: not found"
+	elseif result=1 then
+		sendln "echo -e 8A34002 IN0 have been locked"
+	endif
+	timeout=0
+
+elseif sku_setting =48 then
+	wait prompt_cpss
+	;Check the Port Link up
+	timeout=3
+	sendln "show interfaces status ethernet 0/48"
+	wait "Link-Up"
+	if result=0 then
+		sendln "echo -e Error:SFP Port48 Link down. Check and type the command Solve"
+		timeout=0
+		wait "Error in command line: solve."
+	elseif result=1 then
+		sendln "echo -e SFP Port48 Link up."
+	endif
+	timeout=0
+
+	;//8A34002
+	wait prompt_cpss
+	sendln "CLIexit"
+	wait prompt_diag
+	sendln "i2cset 1 0x77 1"
+	wait prompt_diag
+	sendln "i2cset 1 0x58 0xFC 0xC000 w"
+
+	;//確認8A34002的IN0是否有lock, 0x77顯示未lock
+	wait prompt_diag
+	timeout=3
+	sendln "i2cget 1 0x58 0x44"
+	wait "0x77"
+	if result=0 then
+		sendln "echo -e 8A34002 IN0 have been locked"
+	elseif result=1 then
+		sendln "echo -e Error: 8A34002 not locked. Check and type the command Solve"
+		timeout=0
+		wait "Solve: not found"
+	endif
+	timeout=0
+
+	;//Enable MAC recovered clock( 48 代表port 49)
+	wait prompt_diag
+	sendln "setting_mac_rclk.expect 48 true CPSS_DXCH_PORT_SYNC_ETHER_RECOVERY_CLK0_E CPSS_DXCH_PORT_SYNC_ETHER_RECOVERY_CLOCK_SELECT_0_E"
+
+	;// 確認8A34002的IN0是否有lock, 0x76 or 0x72 or 0x70代表有lock
+	wait prompt_diag
+	timeout=3
+	sendln "i2cget 1 0x58 0x44"
+	wait "0x76" "0x72" "0x70"
+	if result=0 then
+		sendln "echo -e Error: 8A34002 not locked. Check and type the command Solve"
+		timeout=0
+		wait "Solve: not found"
+	elseif result=1 then
+		sendln "echo -e 8A34002 IN0 have been locked"
+	endif
+	timeout=0
+
+else

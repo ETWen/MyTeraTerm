@@ -1,0 +1,98 @@
+prompt_cpss = 'Console#'
+
+;//Before Traffic Test
+
+;//T-Unit 
+;//Copper Specific Interrupt Register
+;//3.8011
+;15: Copper Auto-Negotiation Error			1: error
+;14: Copper Speed Changed					1: changed
+;13: Copper Duplex Changed					1: changed
+;12: Copper Page Received					1: received
+;11: Copper Auto-Negotiation Completed		1: completed
+;10: Copper Link Status Changed				1: Changed
+;9-7: Reserved
+;6: Auto-Negotiation MDI Crossover Changed	1: changed
+;5: Reserved
+;4: Energy Detect Changed					1: changed
+;3: FLP Exchange Complete but No Link		1: detected
+;2-0:Reserved
+
+ports_add[0] = '0x0'
+ports_add[1] = '0x1'
+ports_add[2] = '0x2'
+ports_add[3] = '0x3'
+ports_add[4] = '0x4'
+ports_add[5] = '0x5'
+ports_add[6] = '0x6'
+ports_add[7] = '0x7'
+ports_add[8] = '0x8'
+ports_add[9] = '0x9'
+ports_add[10] = '0xa'
+ports_add[11] = '0xb'
+ports_add[12] = '0xc'
+ports_add[13] = '0xd'
+ports_add[14] = '0xe'
+ports_add[15] = '0xf'
+ports_add[16] = '0x10'
+ports_add[17] = '0x11'
+ports_add[18] = '0x12'
+ports_add[19] = '0x13'
+ports_add[20] = '0x14'
+ports_add[21] = '0x15'
+ports_add[22] = '0x16'
+ports_add[23] = '0x17'
+
+if sku_setting = 24 then
+	sendln "//T-Unit Copper Specific Interrupt Register: Port 1-24"
+	wait prompt_cpss
+	for i 0 23
+		sprintf2 print "dbg xsmi register read device 0 portgroup 0 interface 1 address %s register 0x8011 phydev 3" ports_add[i]
+		sendln print
+		wait prompt_cpss
+	next
+
+	sendln "//H-Unit 10GBASE-R Interrupt Status Register: Port 1-24"
+	wait prompt_cpss
+	for i 0 23
+		sprintf2 print "dbg xsmi register read device 0 portgroup 0 interface 1 address %s register 0x9001 phydev 4" ports_add[i]
+		sendln print
+		wait prompt_cpss
+	next
+
+	sendln "PHY_Interrupt_Register_Read Marco Done"
+elseif sku_setting = 48 then
+
+	sendln "//T-Unit Copper Specific Interrupt Register: Port 1-24"
+	wait prompt_cpss
+	for i 0 23
+		sprintf2 print "dbg xsmi register read device 0 portgroup 0 interface 1 address %s register 0x8011 phydev 3" ports_add[i]
+		sendln print
+		wait prompt_cpss
+	next
+
+	sendln "//T-Unit Copper Specific Interrupt Register: Port 25-48"
+	for i 0 23
+		sprintf2 print "dbg xsmi register read device 0 portgroup 0 interface 0 address %s register 0x8011 phydev 3" ports_add[i]
+		sendln print
+		wait prompt_cpss
+	next
+
+	sendln "//H-Unit 10GBASE-R Interrupt Status Register: Port 1-24"
+	wait prompt_cpss
+	for i 0 23
+		sprintf2 print "dbg xsmi register read device 0 portgroup 0 interface 1 address %s register 0x9001 phydev 4" ports_add[i]
+		sendln print
+		wait prompt_cpss
+	next
+
+	sendln "//H-Unit 10GBASE-R Interrupt Status Register: Port 25-48"
+	wait prompt_cpss
+	for i 0 23
+		sprintf2 print "dbg xsmi register read device 0 portgroup 0 interface 0 address %s register 0x9001 phydev 4" ports_add[i]
+		sendln print
+		wait prompt_cpss
+	next
+
+	sendln "PHY_Interrupt_Register_Read Marco Done"
+endif

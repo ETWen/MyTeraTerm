@@ -1,0 +1,625 @@
+prompt_cpss = 'Console#'
+
+if sku_setting = 24 then
+	;H Unit Link Status XFI_9002_Real Time
+	for i 1 2
+		sprintf2 print "echo -e PMA PMD PCS status H-unit 0x9002 print %d times" i
+		sendln print
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x9002 phydev 4"
+	next
+
+	;H Unit Link Status XFI_1001_Latched
+	for i 1 2
+		sprintf2 print "echo -e PMA PMD PCS status H-unit 0x1001 print %d times" i
+		sendln print
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x1001 phydev 4"
+	next
+
+	;T Unit Link Status 0001_Real Time
+	for i 1 2
+		sprintf2 print "echo -e PMA PMD PCS status T-unit 0x0001 print %d times" i
+		sendln print
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x0001 phydev 3"
+	next
+
+
+	;T Unit Link Status 8008_Real Time
+	for i 1 2
+		sprintf2 print "echo -e PMA PMD PCS status T-unit 0x8008 print %d times" i
+		sendln print
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x8008 phydev 3"
+	next
+
+elseif sku_setting =48 then
+	;H Unit Link Status XFI_9002_Real Time
+	for i 1 2
+		sprintf2 print "echo -e PMA PMD PCS status H-unit 0x9002 print %d times" i
+		sendln print
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x0 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x1 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x2 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x3 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x4 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x5 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x6 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x7 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x8 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x9 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xa register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xb register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xc register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xd register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xe register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xf register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x10 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x11 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x12 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x13 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x14 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x15 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x16 register 0x9002 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x17 register 0x9002 phydev 4"
+	next
+
+	;H Unit Link Status XFI_1001_Latched
+	for i 1 2
+		sprintf2 print "echo -e PMA PMD PCS status H-unit 0x1001 print %d times" i
+		sendln print
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x0 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x1 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x2 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x3 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x4 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x5 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x6 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x7 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x8 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x9 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xa register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xb register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xc register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xd register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xe register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xf register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x10 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x11 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x12 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x13 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x14 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x15 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x16 register 0x1001 phydev 4"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x17 register 0x1001 phydev 4"
+	next
+
+	;T Unit Link Status 0001_Real Time
+	for i 1 2
+		sprintf2 print "echo -e PMA PMD PCS status T-unit 0x0001 print %d times" i
+		sendln print
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x0 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x1 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x2 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x3 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x4 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x5 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x6 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x7 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x8 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x9 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xa register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xb register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xc register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xd register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xe register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xf register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x10 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x11 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x12 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x13 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x14 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x15 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x16 register 0x0001 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x17 register 0x0001 phydev 3"
+	next
+
+
+	;T Unit Link Status 8008_Real Time
+	for i 1 2
+		sprintf2 print "echo -e PMA PMD PCS status T-unit 0x8008 print %d times" i
+		sendln print
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x0 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x1 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x2 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x3 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x4 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x5 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x6 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x7 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x8 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x9 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xa register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xb register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xc register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xd register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xe register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0xf register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x10 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x11 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x12 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x13 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x14 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x15 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x16 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 1 address 0x17 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x0 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x1 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x2 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x3 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x4 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x5 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x6 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x7 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x8 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x9 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xa register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xb register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xc register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xd register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xe register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0xf register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x10 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x11 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x12 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x13 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x14 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x15 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x16 register 0x8008 phydev 3"
+		wait prompt_cpss
+		sendln "dbg xsmi register read device 0 portgroup 0 interface 0 address 0x17 register 0x8008 phydev 3"
+	next
+else
+	sendln "echo ====== Error : Type the wrong sku number ======"
+endif
+

@@ -1,0 +1,8 @@
+; === USB testing ===
+if USB_test_EN=1 then
+	wait prompt_diag
+	sprintf2 USB_test_print "/mnt/ssd3/usb_test_loop.sh %d &" USB_MGMT_duration
+	sendln USB_test_print
+elseif USB_test_EN=0 then
+	sendln "echo ====== No Setting USB_test ======"
+endif

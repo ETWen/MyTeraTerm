@@ -1,0 +1,57 @@
+prompt_diag = 'root@(none):/#'
+prompt_cpss = 'Console#'
+
+sendln "telnet 127.0.0.1 12345"
+wait prompt_cpss
+sendln "set output nopause"
+
+if sku_setting = 24 then
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 1 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 5 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 9 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 13 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 17 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 21 0"
+	wait prompt_cpss
+	sendln "CLIexit"
+	wait "Connection closed by foreign host"
+	wait prompt_diag
+	sendln "cat /tmp/appDemo_stdout"
+elseif sku_setting = 48 then
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 1 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 5 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 9 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 13 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 17 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 21 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 25 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 29 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 33 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 37 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 41 0"
+	wait prompt_cpss
+	sendln "do shell-execute gtAppDemoPhyMtd_GetSerdesEom 45 0"
+	wait prompt_cpss
+	sendln "CLIexit"
+	wait "Connection closed by foreign host"
+	wait prompt_diag
+	sendln "cat /tmp/appDemo_stdout"
+endif
+
+
+

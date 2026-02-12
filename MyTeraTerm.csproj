@@ -35,6 +35,30 @@
     </None>
   </ItemGroup>
 
+  <!-- 定義要複製的資料夾 -->
+  <ItemGroup>
+    <Content Include="Application\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Publish 後處理：複製額外檔案 -->
+  <Target Name="CustomPublishActions" AfterTargets="Publish">
+    <Message Text="Copying Application folder to publish directory..." Importance="high" />
+    
+    <!-- 複製 Application 資料夾 -->
+    <ItemGroup>
+      <ApplicationFiles Include="$(ProjectDir)Application\**\*.*" />
+    </ItemGroup>
+    
+    <Copy SourceFiles="@(ApplicationFiles)" 
+          DestinationFolder="$(PublishDir)Application\%(RecursiveDir)" 
+          SkipUnchangedFiles="true" />
+    
+    <Message Text="Application folder copied successfully!" Importance="high" />
+  </Target>
+
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
