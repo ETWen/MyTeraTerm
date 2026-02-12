@@ -103,6 +103,9 @@ namespace MyTeraTerm
             InitializePduControlLogic();
             UpdatePanelLayout(1);   //Default to single terminal view
             
+            // 初始化 PDU Power Cycle 狀態顯示
+            UpdatePduPowerCycleStatus();
+            
             // Enable console for debugging
             // AllocConsole();
         }
@@ -402,6 +405,9 @@ namespace MyTeraTerm
         private StreamWriter?[] rxLogWriters = new StreamWriter?[6];
         private readonly object[] rxLogLocks = new object[6];
         private bool[] isLineStart = new bool[6];
+        
+        // PDU Power On Statistics
+        private int[] pduPowerOnCount = new int[6];
 
         private void button1Connect_Click(object sender, EventArgs e)
         {
@@ -1336,27 +1342,27 @@ namespace MyTeraTerm
         private CancellationTokenSource scriptCts6;
         private void buttonRunScript1_Click(object sender, EventArgs e)
         {
-            RunTTLScript(ref bridge1, ref ttlInterpreter1, ref scriptCts1, label1ScriptStatus, button1RunScript, button1EndScript);
+            RunTTLScript(0, ref bridge1, ref ttlInterpreter1, ref scriptCts1, label1ScriptStatus, button1RunScript, button1EndScript);
         }
         private void buttonRunScript2_Click(object sender, EventArgs e)
         {
-            RunTTLScript(ref bridge2, ref ttlInterpreter2, ref scriptCts2, label2ScriptStatus, button2RunScript, button2EndScript);
+            RunTTLScript(1, ref bridge2, ref ttlInterpreter2, ref scriptCts2, label2ScriptStatus, button2RunScript, button2EndScript);
         }
         private void buttonRunScript3_Click(object sender, EventArgs e)
         {
-            RunTTLScript(ref bridge3, ref ttlInterpreter3, ref scriptCts3, label3ScriptStatus, button3RunScript, button3EndScript);
+            RunTTLScript(2, ref bridge3, ref ttlInterpreter3, ref scriptCts3, label3ScriptStatus, button3RunScript, button3EndScript);
         }
         private void buttonRunScript4_Click(object sender, EventArgs e)
         {
-            RunTTLScript(ref bridge4, ref ttlInterpreter4, ref scriptCts4, label4ScriptStatus, button4RunScript, button4EndScript);
+            RunTTLScript(3, ref bridge4, ref ttlInterpreter4, ref scriptCts4, label4ScriptStatus, button4RunScript, button4EndScript);
         }
         private void buttonRunScript5_Click(object sender, EventArgs e)
         {
-            RunTTLScript(ref bridge5, ref ttlInterpreter5, ref scriptCts5, label5ScriptStatus, button5RunScript, button5EndScript);
+            RunTTLScript(4, ref bridge5, ref ttlInterpreter5, ref scriptCts5, label5ScriptStatus, button5RunScript, button5EndScript);
         }
         private void buttonRunScript6_Click(object sender, EventArgs e)
         {
-            RunTTLScript(ref bridge6, ref ttlInterpreter6, ref scriptCts6, label6ScriptStatus, button6RunScript, button6EndScript);
+            RunTTLScript(5, ref bridge6, ref ttlInterpreter6, ref scriptCts6, label6ScriptStatus, button6RunScript, button6EndScript);
         }
 
         private void buttonEndScript1_Click(object sender, EventArgs e)
@@ -1384,7 +1390,7 @@ namespace MyTeraTerm
             EndTTLScript(ref ttlInterpreter6, ref scriptCts6, label6ScriptStatus, button6RunScript, button6EndScript);
         }
 
-        private void RunTTLScript(ref ComPortBridge bridge, ref TTLInterpreter interpreter, ref CancellationTokenSource cts, Label statusLabel, Button runButton, Button endButton)
+        private void RunTTLScript(int terminalIndex, ref ComPortBridge bridge, ref TTLInterpreter interpreter, ref CancellationTokenSource cts, Label statusLabel, Button runButton, Button endButton)
         {
             if (bridge == null || !bridge.IsRunning)
             {
@@ -1392,6 +1398,12 @@ namespace MyTeraTerm
                             "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            
+            // Reset PDU power on count for this terminal
+            pduPowerOnCount[terminalIndex] = 0;
+            
+            // 更新狀態欄顯示
+            UpdatePduPowerCycleStatus();
 
             try
             {
@@ -1480,8 +1492,11 @@ namespace MyTeraTerm
                 // 訂閱 PDU 連線事件
                 currentInterpreter.PduConnectRequested += Interpreter_PduConnectRequested;
 
-                // 訂閱 PDU 控制事件
-                currentInterpreter.PduControlRequested += OnTtlPduControlRequested;
+                // 訂閱 PDU 控制事件 (with terminal index)
+                currentInterpreter.PduControlRequested += (device, port, action) =>
+                {
+                    OnTtlPduControlRequested(terminalIndex, device, port, action);
+                };
 
                 // Execute script (run in background to avoid blocking UI)
                 System.Threading.Tasks.Task.Run(() =>
@@ -1512,10 +1527,23 @@ namespace MyTeraTerm
                         
                         AppLogger.LogInfo("=== TTL Script Completed ===");
                         
+                        // Log PDU statistics
+                        if (pduPowerOnCount[terminalIndex] > 0)
+                        {
+                            AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU Power On count: {pduPowerOnCount[terminalIndex]}");
+                        }
+                        
                         Invoke(new Action(() =>
                         {
                             statusLabel.Text = $"Script - {scriptFileName} : Completed";
                             statusLabel.ForeColor = System.Drawing.Color.Green;
+                            
+                            // Log PDU statistics to RX log
+                            if (pduPowerOnCount[terminalIndex] > 0 && rxLogWriters[terminalIndex] != null)
+                            {
+                                WriteRxLog(terminalIndex, $"\n=== PDU Statistics ===", false);
+                                WriteRxLog(terminalIndex, $"\nPower On Count: {pduPowerOnCount[terminalIndex]}\n", false);
+                            }
                             
                             runButton.Enabled = true;
                             endButton.Visible = false;

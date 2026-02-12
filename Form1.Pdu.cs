@@ -38,6 +38,44 @@ namespace MyTeraTerm
         #region Pdu DataGridView Handlers
         
         /// <summary>
+        /// Update the PDU power cycle status in the status strip based on the power on counts for each terminal
+        /// </summary>
+        private void UpdatePduPowerCycleStatus()
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(UpdatePduPowerCycleStatus));
+                return;
+            }
+            
+            try
+            {
+                string[] termStats = new string[6];
+                for (int i = 0; i < 6; i++)
+                {
+                    if (pduPowerOnCount[i] > 0)
+                    {
+                        termStats[i] = $"TERM{i + 1}={pduPowerOnCount[i]}";
+                    }
+                    else
+                    {
+                        termStats[i] = $"TERM{i + 1}=NA";
+                    }
+                }
+                
+                toolStripStatusLabel2.Text = $"[Power Cycle] {string.Join("     ", termStats)}";
+                
+                // If any terminal has a power on count greater than 0, show in dark blue; otherwise gray
+                bool hasActiveCount = pduPowerOnCount.Any(count => count > 0);
+                toolStripStatusLabel2.ForeColor = hasActiveCount ? Color.DarkBlue : Color.Gray;
+            }
+            catch (Exception ex)
+            {
+                AppLogger.LogError($"[PDU] Failed to update power cycle status: {ex.Message}");
+            }
+        }
+        
+        /// <summary>
         /// 更新 PDU DataGridView 中指定 Port 的資訊
         /// </summary>
         private void UpdatePduDataGridView(int portNumber, bool? state, int? current, int? power)
@@ -436,20 +474,20 @@ namespace MyTeraTerm
         /// <summary>
         /// TTL Script 請求控制 PDU 事件處理
         /// </summary>
-        private void OnTtlPduControlRequested(int device, int port, int action)
+        private void OnTtlPduControlRequested(int terminalIndex, int device, int port, int action)
         {
             if (InvokeRequired)
             {
-                Invoke(new Action(() => OnTtlPduControlRequested(device, port, action)));
+                Invoke(new Action(() => OnTtlPduControlRequested(terminalIndex, device, port, action)));
                 return;
             }
             
-            AppLogger.LogInfo($"[Form] TTL PDU Control: Device={device}, Port={port}, Action={action}");
+            //AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] TTL PDU Control: Device={device}, Port={port}, Action={action}");
             
             // 檢查 PDU 是否連線
             if (pduController == null)
             {
-                AppLogger.LogInfo("[Form] PDU not connected, ignoring command");
+                AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU not connected, ignoring command");
                 MessageBox.Show("PDU is not connected. Please connect first.", 
                             "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -461,7 +499,7 @@ namespace MyTeraTerm
             
             if (currentModel != requestedModel)
             {
-                AppLogger.LogInfo($"[Form] PDU model mismatch. Connected: {currentModel}, Requested: {requestedModel}");
+                AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU model mismatch. Connected: {currentModel}, Requested: {requestedModel}");
                 MessageBox.Show($"PDU model mismatch!\nConnected: {currentModel}\nRequested: {requestedModel}", 
                             "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -474,12 +512,34 @@ namespace MyTeraTerm
                 if (action == 1)
                 {
                     success = pduController.SetPduPortOn(port);
-                    AppLogger.LogInfo($"[Form] PDU Port {port} turned ON: {success}");
+                    AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU Port {port} turned ON: {success}");
+                    
+                    // 統計 Power On 次數
+                    if (success)
+                    {
+                        pduPowerOnCount[terminalIndex]++;
+                        AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU Power On count: {pduPowerOnCount[terminalIndex]}");
+                        
+                        // 記錄到 RX Log
+                        if (rxLogWriters[terminalIndex] != null)
+                        {
+                            WriteRxLog(terminalIndex, $"\n[PDU] Port {port} Power ON (Count: {pduPowerOnCount[terminalIndex]})\n", false);
+                        }
+                        
+                        // 更新狀態欄顯示
+                        UpdatePduPowerCycleStatus();
+                    }
                 }
                 else
                 {
                     success = pduController.SetPduPortOff(port);
-                    AppLogger.LogInfo($"[Form] PDU Port {port} turned OFF: {success}");
+                    AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU Port {port} turned OFF: {success}");
+                    
+                    // 記錄到 RX Log
+                    if (success && rxLogWriters[terminalIndex] != null)
+                    {
+                        WriteRxLog(terminalIndex, $"\n[PDU] Port {port} Power OFF\n", false);
+                    }
                 }
                 
                 if (success)
@@ -510,19 +570,18 @@ namespace MyTeraTerm
                         int? power = pduController.GetPduPortPower(port);
                         UpdatePduDataGridView(port, state, current, power);
                         
-                        AppLogger.LogInfo($"[Form] UI updated for Port {port}");
                     }
                 }
                 else
                 {
-                    AppLogger.LogInfo($"[Form] Failed to control PDU Port {port}");
+                    AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] Failed to control PDU Port {port}");
                     MessageBox.Show($"Failed to control PDU Port {port}", 
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                AppLogger.LogInfo($"[Form] Error controlling PDU: {ex.Message}");
+                AppLogger.LogError($"[Terminal {terminalIndex + 1}] Error controlling PDU", ex);
                 MessageBox.Show($"Error controlling PDU:\n{ex.Message}", 
                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
