@@ -73,7 +73,6 @@
 - 📊 Real-time connection status indicators (LEDs)
 - 🔄 Flexible layout: 1/2/4/6 terminal views
 - 🎯 Status bar with version info and local time
-- 🔐 Password-protected debug console access
 
 ---
 
@@ -121,7 +120,7 @@
 - **Framework**: .NET Framework 4.7.2 or higher
 - **RAM**: 512 MB (1 GB recommended)
 - **Disk Space**: 100 MB free space
-- **Display**: 1024x768 resolution (1920x1080 recommended)
+- **Display**: 1600x900 recommended
 
 ### Required Dependencies
 
@@ -181,7 +180,7 @@
    ```
 
 2. **Select Terminal View**
-   - Menu → Terminal → Select "1" for single terminal
+   - Setup → Terminal → Select "1" for single terminal
 
 3. **Configure Terminal 1**
    - COM Port: Select your physical COM port (e.g., COM3)
@@ -260,7 +259,7 @@ Each terminal has TX/RX status LEDs:
 | LED | State | Meaning |
 |-----|-------|---------|
 | 🟢 TX Green | Flash | Transmitting data |
-| 🔴 RX Red | Flash | Receiving data |
+| 🟢 RX Red | Flash | Receiving data |
 
 ---
 
@@ -284,9 +283,9 @@ mpause 500                 ; Pause 500 ms
 
 ; PDU Control (requires PDU hardware)
 pduconnect '192.168.1.100' 'admin' 'password'
-pduon 1                    ; Turn on outlet 1
+pductrl 2 1 1              ; Turn on iPoMan II 1202 port 1
 wait 2000
-pduoff 1                   ; Turn off outlet 1
+pductrl 2 1 0              ; Turn off iPoMan II 1202 port 1
 ```
 
 ### Example Scripts
@@ -309,47 +308,22 @@ sendln 'ls -la'
 ; filepath: Scripts/power_cycle.ttl
 ; Power cycle device via PDU
 
-; Connect to PDU
-pduconnect '192.168.1.100' 'admin' 'admin'
+; Connect to PDU iPoMan II 1202
+pduconnect 2 192.168.1.21
 
-; Power off
-pduoff 1
-mpause 3000
+; Power off port 1
+pductrl 2 1 0
+pause 5
 
-; Power on
-pduon 1
-mpause 5000
+; Power on port 1
+pductrl 2 1 1
+pause 5
 
 ; Wait for device prompt
 wait 'login: '
 sendln 'root'
 wait 'Password: '
 sendln 'toor'
-```
-
-#### 3. Automated Test Sequence
-```ttl
-; filepath: Scripts/automated_test.ttl
-; Automated device testing
-
-; Wait for boot
-wait 'login: '
-sendln 'admin'
-wait 'Password: '
-sendln 'admin123'
-wait '# '
-
-; Run tests
-sendln 'test_network'
-wait 'PASS'
-
-sendln 'test_memory'
-wait 'PASS'
-
-sendln 'test_storage'
-wait 'PASS'
-
-sendln 'exit'
 ```
 
 ### Creating TTL Scripts
@@ -381,18 +355,17 @@ PDU control allows you to remotely power cycle devices during testing.
 #### In TTL Scripts
 ```ttl
 ; Connect to PDU
-pduconnect 'PDU_IP' 'username' 'password'
+pduconnect 'PDU_Device' 'PDU_IP'
 
 ; Control outlets
-pduon 1      ; Turn on outlet 1
-pduoff 1     ; Turn off outlet 1
+pductrl 2 1 1     ; Turn on outlet 1
+pductrl 2 1 0     ; Turn off outlet 1
 ```
 
-#### Manual Control (via Menu)
+#### Manual Control (TabPage)
 ```
-Menu → PDU → Connect
+TabPage → PDU → Connect
 - Enter PDU IP address
-- Enter username and password
 - Click Connect
 ```
 
@@ -400,8 +373,8 @@ Menu → PDU → Connect
 
 | Command | Syntax | Description |
 |---------|--------|-------------|
-| Connect | `pduconnect 'IP' 'user' 'pass'` | Connect to PDU |
-| Power On/Off | `pductrl 'device' 'port' 'on/off'` | Turn on specific outlet |
+| Connect | `pduconnect 'Device' 'ip'` | Connect to PDU |
+| Power On/Off | `pductrl 'device' 'port' 'on/off'` | Specific port on(1) / off(0)  |
 
 ---
 
@@ -567,7 +540,7 @@ For detailed troubleshooting:
 
 ### Prerequisites
 
-- Visual Studio 2019 or later
+- Visual Studio 2022 or later
 - .NET Framework 4.7.2 SDK
 - Git
 
@@ -637,10 +610,8 @@ MyTeraTerm/
 ├── PasswordDialog.cs         # Password dialog
 ├── MyTeraTerm.csproj        # Project file
 ├── VERSION.md                # Version history
-├── README.md                 # This file
+└── README.md                 # This file
 └── ref/                      # Reference documentation
-    ├── gitcommit.md         # Git commit guide
-    └── TAG_TEMPLATE.md      # Release tag template
 ```
 
 ---
@@ -761,13 +732,6 @@ This project wouldn't be possible without:
 - **Email**: eric441151893@gmail.com
 - **GitHub**: https://github.com/ETWen/MyTeraTerm
 - **Issues**: https://github.com/ETWen/MyTeraTerm/issues
-
-### Support
-
-- 📖 **Documentation**: See Wiki (coming soon)
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/ETWen/MyTeraTerm/issues)
-- 💡 **Feature Requests**: [GitHub Issues](https://github.com/ETWen/MyTeraTerm/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/ETWen/MyTeraTerm/discussions)
 
 ---
 
