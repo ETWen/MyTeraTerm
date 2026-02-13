@@ -459,9 +459,14 @@ namespace MyTeraTerm
                     CreateRxLogFile(0, checkBox1LogEnable, checkBox1TimestampEnable);
                     
                     ConnectTerminal(virtualPort2, baudRate, ref externalProcess, ref windowController1, panel1, ref bridge1);
+                    
+                    // 為此終端創建 TTLInterpreter 以支持 waitall
+                    CreateInterpreterForTerminal(0, ref bridge1, ref ttlInterpreter1);
                 
                 button1Connect.Text = "Disconnect";
                 button1Connect.BackColor = Color.LightGreen;
+                comboBox1ComPort.Enabled = false;
+                comboBox1BaudRate.Enabled = false;
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -497,9 +502,16 @@ namespace MyTeraTerm
             else
             {
                 CloseRxLogFile(0, checkBox1LogEnable, checkBox1TimestampEnable);
+                
+                // 釋放 TTLInterpreter
+                ttlInterpreter1?.Dispose();
+                ttlInterpreter1 = null;
+                
                 DisconnectTerminal(ref externalProcess, ref windowController1, ref bridge1);
                 button1Connect.Text = "Connect";
                 button1Connect.BackColor = Color.LightCoral;
+                comboBox1ComPort.Enabled = true;
+                comboBox1BaudRate.Enabled = true;
             }
         }
         private void button2Connect_Click(object sender, EventArgs e)
@@ -552,9 +564,14 @@ namespace MyTeraTerm
                     CreateRxLogFile(1, checkBox2LogEnable, checkBox2TimestampEnable);
                     
                     ConnectTerminal(virtualPort2, baudRate, ref externalProcess2, ref windowController2, panel2, ref bridge2);
+                    
+                    // 為此終端創建 TTLInterpreter 以支持 waitall
+                    CreateInterpreterForTerminal(1, ref bridge2, ref ttlInterpreter2);
                 
                 button2Connect.Text = "Disconnect";
                 button2Connect.BackColor = Color.LightGreen;
+                comboBox2ComPort.Enabled = false;
+                comboBox2BaudRate.Enabled = false;
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -590,9 +607,16 @@ namespace MyTeraTerm
             else
             {
                 CloseRxLogFile(1, checkBox2LogEnable, checkBox2TimestampEnable);
+                
+                // 釋放 TTLInterpreter
+                ttlInterpreter2?.Dispose();
+                ttlInterpreter2 = null;
+                
                 DisconnectTerminal(ref externalProcess2, ref windowController2, ref bridge2);
                 button2Connect.Text = "Connect";
                 button2Connect.BackColor = Color.LightCoral;
+                comboBox2ComPort.Enabled = true;
+                comboBox2BaudRate.Enabled = true;
             }
         }
         private void button3Connect_Click(object sender, EventArgs e)
@@ -645,9 +669,14 @@ namespace MyTeraTerm
                     CreateRxLogFile(2, checkBox3LogEnable, checkBox3TimestampEnable);
                     
                     ConnectTerminal(virtualPort2, baudRate, ref externalProcess3, ref windowController3, panel3, ref bridge3);
+                    
+                    // 為此終端創建 TTLInterpreter 以支持 waitall
+                    CreateInterpreterForTerminal(2, ref bridge3, ref ttlInterpreter3);
                 
                 button3Connect.Text = "Disconnect";
                 button3Connect.BackColor = Color.LightGreen;
+                comboBox3ComPort.Enabled = false;
+                comboBox3BaudRate.Enabled = false;
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -683,9 +712,16 @@ namespace MyTeraTerm
             else
             {
                 CloseRxLogFile(2, checkBox3LogEnable, checkBox3TimestampEnable);
+                
+                // 釋放 TTLInterpreter
+                ttlInterpreter3?.Dispose();
+                ttlInterpreter3 = null;
+                
                 DisconnectTerminal(ref externalProcess3, ref windowController3, ref bridge3);
                 button3Connect.Text = "Connect";
                 button3Connect.BackColor = Color.LightCoral;
+                comboBox3ComPort.Enabled = true;
+                comboBox3BaudRate.Enabled = true;
             }
         }
         private void button4Connect_Click(object sender, EventArgs e)
@@ -738,9 +774,14 @@ namespace MyTeraTerm
                     CreateRxLogFile(3, checkBox4LogEnable, checkBox4TimestampEnable);
                     
                     ConnectTerminal(virtualPort2, baudRate, ref externalProcess4, ref windowController4, panel4, ref bridge4);
+                    
+                    // 為此終端創建 TTLInterpreter 以支持 waitall
+                    CreateInterpreterForTerminal(3, ref bridge4, ref ttlInterpreter4);
                 
                 button4Connect.Text = "Disconnect";
                 button4Connect.BackColor = Color.LightGreen;
+                comboBox4ComPort.Enabled = false;
+                comboBox4BaudRate.Enabled = false;
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -776,9 +817,16 @@ namespace MyTeraTerm
             else
             {
                 CloseRxLogFile(3, checkBox4LogEnable, checkBox4TimestampEnable);
+                
+                // 釋放 TTLInterpreter
+                ttlInterpreter4?.Dispose();
+                ttlInterpreter4 = null;
+                
                 DisconnectTerminal(ref externalProcess4, ref windowController4, ref bridge4);
                 button4Connect.Text = "Connect";
                 button4Connect.BackColor = Color.LightCoral;
+                comboBox4ComPort.Enabled = true;
+                comboBox4BaudRate.Enabled = true;
             }
         }
         private void button5Connect_Click(object sender, EventArgs e)
@@ -831,9 +879,14 @@ namespace MyTeraTerm
                     CreateRxLogFile(4, checkBox5LogEnable, checkBox5TimestampEnable);
                     
                     ConnectTerminal(virtualPort2, baudRate, ref externalProcess5, ref windowController5, panel5, ref bridge5);
+                    
+                    // 為此終端創建 TTLInterpreter 以支持 waitall
+                    CreateInterpreterForTerminal(4, ref bridge5, ref ttlInterpreter5);
                 
                 button5Connect.Text = "Disconnect";
                 button5Connect.BackColor = Color.LightGreen;
+                comboBox5ComPort.Enabled = false;
+                comboBox5BaudRate.Enabled = false;
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -869,9 +922,16 @@ namespace MyTeraTerm
             else
             {
                 CloseRxLogFile(4, checkBox5LogEnable, checkBox5TimestampEnable);
+                
+                // 釋放 TTLInterpreter
+                ttlInterpreter5?.Dispose();
+                ttlInterpreter5 = null;
+                
                 DisconnectTerminal(ref externalProcess5, ref windowController5, ref bridge5);
                 button5Connect.Text = "Connect";
                 button5Connect.BackColor = Color.LightCoral;
+                comboBox5ComPort.Enabled = true;
+                comboBox5BaudRate.Enabled = true;
             }
         }
         private void button6Connect_Click(object sender, EventArgs e)
@@ -924,9 +984,14 @@ namespace MyTeraTerm
                     CreateRxLogFile(5, checkBox6LogEnable, checkBox6TimestampEnable);
                     
                     ConnectTerminal(virtualPort2, baudRate, ref externalProcess6, ref windowController6, panel6, ref bridge6);
+                    
+                    // 為此終端創建 TTLInterpreter 以支持 waitall
+                    CreateInterpreterForTerminal(5, ref bridge6, ref ttlInterpreter6);
                 
                 button6Connect.Text = "Disconnect";
                 button6Connect.BackColor = Color.LightGreen;
+                comboBox6ComPort.Enabled = false;
+                comboBox6BaudRate.Enabled = false;
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -962,9 +1027,16 @@ namespace MyTeraTerm
             else
             {
                 CloseRxLogFile(5, checkBox6LogEnable, checkBox6TimestampEnable);
+                
+                // 釋放 TTLInterpreter
+                ttlInterpreter6?.Dispose();
+                ttlInterpreter6 = null;
+                
                 DisconnectTerminal(ref externalProcess6, ref windowController6, ref bridge6);
                 button6Connect.Text = "Connect";
                 button6Connect.BackColor = Color.LightCoral;
+                comboBox6ComPort.Enabled = true;
+                comboBox6BaudRate.Enabled = true;
             }
         }
 
@@ -1399,10 +1471,8 @@ namespace MyTeraTerm
                 return;
             }
             
-            // Reset PDU power on count for this terminal
+            // Reset counter for this terminal
             pduPowerOnCount[terminalIndex] = 0;
-            
-            // 更新狀態欄顯示
             UpdatePduPowerCycleStatus();
 
             try
@@ -1466,14 +1536,35 @@ namespace MyTeraTerm
                 cts = new CancellationTokenSource();
                 CancellationToken token = cts.Token;
 
-                // Create TTL Interpreter
-                interpreter?.Dispose();
-                interpreter = new TTLInterpreter(bridge);
-                AppLogger.LogInfo("[TTL] Interpreter created using bridge");
+                // Create or reuse TTL Interpreter
+                if (interpreter == null)
+                {
+                    interpreter = new TTLInterpreter(bridge);
+                    AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] Interpreter created for script execution");
+                    
+                    // 訂閱 WaitAll 和 SendAll 事件（只在创建时订阅一次）
+                    interpreter.WaitAllRequested += (text) =>
+                    {
+                        AppLogger.LogInfo($"[WaitAll Event] Called from Terminal {terminalIndex + 1}, checking for: '{text}'");
+                        bool result = CheckAllTerminalsReceived(text);
+                        AppLogger.LogInfo($"[WaitAll Event] Returning: {result}");
+                        return result;
+                    };
+                    
+                    interpreter.SendAllRequested += (text, newline) =>
+                    {
+                        AppLogger.LogInfo($"[SendAll Event] Called from Terminal {terminalIndex + 1}");
+                        SendToAllTerminals(text, newline);
+                    };
+                }
+                else
+                {
+                    AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] Reusing existing interpreter for script execution");
+                }
 
                 TTLInterpreter currentInterpreter = interpreter;
                 
-                // 訂閱狀態更新事件
+                // 訂閱狀態更新事件（每次运行都需要订阅，因为状态标签可能不同）
                 currentInterpreter.StatusChanged += (fileName, lineNumber, command) =>
                 {
                     if (InvokeRequired)
@@ -1497,6 +1588,15 @@ namespace MyTeraTerm
                 {
                     OnTtlPduControlRequested(terminalIndex, device, port, action);
                 };
+                
+                // 訂閱 CountKeys 事件
+                currentInterpreter.CountKeysRequested += (keyword) =>
+                {
+                    OnCountKeysRequested(terminalIndex, keyword);
+                };
+                
+                // REMOVED: 不要在这里重复订阅 SendAll 和 WaitAll 事件
+                // 已经在上面创建 interpreter 时或在 CreateInterpreterForTerminal 中订阅过了
 
                 // Execute script (run in background to avoid blocking UI)
                 System.Threading.Tasks.Task.Run(() =>
@@ -1527,23 +1627,10 @@ namespace MyTeraTerm
                         
                         AppLogger.LogInfo("=== TTL Script Completed ===");
                         
-                        // Log PDU statistics
-                        if (pduPowerOnCount[terminalIndex] > 0)
-                        {
-                            AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU Power On count: {pduPowerOnCount[terminalIndex]}");
-                        }
-                        
                         Invoke(new Action(() =>
                         {
                             statusLabel.Text = $"Script - {scriptFileName} : Completed";
                             statusLabel.ForeColor = System.Drawing.Color.Green;
-                            
-                            // Log PDU statistics to RX log
-                            if (pduPowerOnCount[terminalIndex] > 0 && rxLogWriters[terminalIndex] != null)
-                            {
-                                WriteRxLog(terminalIndex, $"\n=== PDU Statistics ===", false);
-                                WriteRxLog(terminalIndex, $"\nPower On Count: {pduPowerOnCount[terminalIndex]}\n", false);
-                            }
                             
                             runButton.Enabled = true;
                             endButton.Visible = false;
@@ -1614,13 +1701,8 @@ namespace MyTeraTerm
                 // 3. 等待一小段時間讓腳本有機會優雅地停止
                 System.Threading.Thread.Sleep(200);
                 
-                // 4. 釋放 interpreter 資源
-                if (interpreter != null)
-                {
-                    AppLogger.LogInfo("[TTL] Disposing interpreter");
-                    interpreter.Dispose();
-                    interpreter = null;
-                }
+                // 4. 不要釋放 interpreter，保留它以便 waitall 繼續工作和下次腳本重用
+                // interpreter 會在斷開終端連線時被釋放
                 
                 // 更新狀態
                 statusLabel.Text = "Script - Stopped by user";
@@ -1636,6 +1718,196 @@ namespace MyTeraTerm
             // 恢復按鈕狀態
             runButton.Enabled = true;
             endButton.Visible = false;
+        }
+        
+        /// <summary>
+        /// Send text to all connected terminals
+        /// </summary>
+        private void SendToAllTerminals(string text, bool newline)
+        {
+            string dataToSend = text + (newline ? "\r\n" : "");
+            
+            ComPortBridge[] bridges = { bridge1, bridge2, bridge3, bridge4, bridge5, bridge6 };
+            int sentCount = 0;
+            
+            for (int i = 0; i < bridges.Length; i++)
+            {
+                if (bridges[i] != null && bridges[i].IsRunning)
+                {
+                    try
+                    {
+                        bridges[i].SendData(dataToSend);
+                        sentCount++;
+                        //AppLogger.LogInfo($"[SendAll] Sent to Terminal {i + 1}: {text}");
+                    }
+                    catch (Exception ex)
+                    {
+                        AppLogger.LogError($"[SendAll] Failed to send to Terminal {i + 1}: {ex.Message}");
+                    }
+                }
+            }
+            
+            //AppLogger.LogInfo($"[SendAll] Sent to {sentCount} terminal(s)");
+        }
+        
+        /// <summary>
+        /// Check if all connected terminals have received the specified text
+        /// </summary>
+        private bool CheckAllTerminalsReceived(string text)
+        {
+            TTLInterpreter[] interpreters = { ttlInterpreter1, ttlInterpreter2, ttlInterpreter3, 
+                                            ttlInterpreter4, ttlInterpreter5, ttlInterpreter6 };
+            ComPortBridge[] bridges = { bridge1, bridge2, bridge3, bridge4, bridge5, bridge6 };
+            
+            bool anyConnected = false;
+            bool allReceived = true;
+            
+            //AppLogger.LogInfo($"[WaitAll Check] Looking for text: '{text}'");
+            
+            for (int i = 0; i < bridges.Length; i++)
+            {
+                // 只檢查已連線的終端
+                if (bridges[i] != null && bridges[i].IsRunning)
+                {
+                    anyConnected = true;
+                    //AppLogger.LogInfo($"[WaitAll Check] Terminal {i + 1} is connected (Bridge: {bridges[i].Port1Name} <-> {bridges[i].Port2Name})");
+                    
+                    if (interpreters[i] == null)
+                    {
+                        //AppLogger.LogWarning($"[WaitAll Check] Terminal {i + 1} interpreter is null!");
+                        allReceived = false;
+                        break;
+                    }
+                    
+                    // 获取解释器缓冲区的实际内容用于调试
+                    string bufferPreview = GetInterpreterBufferPreview(interpreters[i]);
+                    //AppLogger.LogInfo($"[WaitAll Check] Terminal {i + 1} buffer: {bufferPreview}");
+                    
+                    bool hasText = interpreters[i].ContainsText(text);
+                    //AppLogger.LogInfo($"[WaitAll Check] Terminal {i + 1} has text '{text}': {hasText}");
+                    
+                    if (!hasText)
+                    {
+                        allReceived = false;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (bridges[i] != null)
+                    {
+                        //AppLogger.LogInfo($"[WaitAll Check] Terminal {i + 1} bridge not running (IsRunning: {bridges[i].IsRunning})");
+                    }
+                    else
+                    {
+                        //AppLogger.LogInfo($"[WaitAll Check] Terminal {i + 1} bridge is null");
+                    }
+                }
+            }
+            
+            // 如果沒有任何連線的終端，返回 false
+            if (!anyConnected)
+            {
+                //AppLogger.LogWarning("[WaitAll Check] No terminals connected!");
+                return false;
+            }
+            
+            // 如果所有已連線的終端都收到了，清除各終端的緩衝區
+            if (allReceived)
+            {
+                //AppLogger.LogInfo($"[WaitAll Check] All terminals received the text!");
+                for (int i = 0; i < bridges.Length; i++)
+                {
+                    if (bridges[i] != null && bridges[i].IsRunning && interpreters[i] != null)
+                    {
+                        interpreters[i].RemoveTextFromBuffer(text);
+                        //AppLogger.LogInfo($"[WaitAll] Terminal {i + 1} buffer cleared");
+                    }
+                }
+            }
+            else
+            {
+                //AppLogger.LogInfo($"[WaitAll Check] Not all terminals have received the text yet");
+            }
+            
+            return allReceived;
+        }
+        
+        /// <summary>
+        /// Get a preview of interpreter buffer content for debugging
+        /// </summary>
+        private string GetInterpreterBufferPreview(TTLInterpreter interpreter)
+        {
+            if (interpreter == null)
+                return "[null interpreter]";
+            
+            try
+            {
+                // 使用反射访问私有的 receiveBuffer 字段
+                var bufferField = typeof(TTLInterpreter).GetField("receiveBuffer", 
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                
+                if (bufferField != null)
+                {
+                    var buffer = bufferField.GetValue(interpreter) as System.Text.StringBuilder;
+                    if (buffer != null)
+                    {
+                        string content = buffer.ToString();
+                        if (content.Length == 0)
+                            return "[empty]";
+                        else if (content.Length <= 100)
+                            return $"'{content}'";
+                        else
+                            return $"'{content.Substring(0, 100)}...' (length: {content.Length})";
+                    }
+                }
+                return "[cannot access buffer]";
+            }
+            catch (Exception ex)
+            {
+                return $"[error: {ex.Message}]";
+            }
+        }
+        
+        /// <summary>
+        /// Create TTLInterpreter for a terminal (used for waitall support)
+        /// </summary>
+        private void CreateInterpreterForTerminal(int terminalIndex, ref ComPortBridge bridge, ref TTLInterpreter interpreter)
+        {
+            try
+            {
+                if (bridge == null || !bridge.IsRunning)
+                {
+                    AppLogger.LogWarning($"[Terminal {terminalIndex + 1}] Cannot create interpreter: bridge not running");
+                    return;
+                }
+                
+                // Dispose existing interpreter if any
+                interpreter?.Dispose();
+                
+                // Create new interpreter
+                interpreter = new TTLInterpreter(bridge);
+                AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] Interpreter created for waitall support");
+                
+                // Event handlers for waitall and sendall (only subscribe once when creating interpreter)
+                interpreter.WaitAllRequested += (text) =>
+                {
+                    //AppLogger.LogInfo($"[WaitAll Event] Called from Terminal {terminalIndex + 1}, checking for: '{text}'");
+                    bool result = CheckAllTerminalsReceived(text);
+                    //AppLogger.LogInfo($"[WaitAll Event] Returning: {result}");
+                    return result;
+                };
+                
+                interpreter.SendAllRequested += (text, newline) =>
+                {
+                    //AppLogger.LogInfo($"[SendAll Event] Called from Terminal {terminalIndex + 1}");
+                    SendToAllTerminals(text, newline);
+                };
+            }
+            catch (Exception ex)
+            {
+                AppLogger.LogError($"[Terminal {terminalIndex + 1}] Failed to create interpreter: {ex.Message}");
+            }
         }
 
         private void UpdateScriptStatus(Label statusLabel, string fileName, int lineNumber, string command)
@@ -1664,6 +1936,40 @@ namespace MyTeraTerm
             else
             {
                 statusLabel.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+        
+        /// <summary>
+        /// Handle countkeys command - increment counter and log
+        /// </summary>
+        private void OnCountKeysRequested(int terminalIndex, string keyword)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => OnCountKeysRequested(terminalIndex, keyword)));
+                return;
+            }
+            
+            try
+            {
+                // Increment counter
+                pduPowerOnCount[terminalIndex]++;
+                
+                // Log to Debug log
+                AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] CountKeys '{keyword}': {pduPowerOnCount[terminalIndex]}");
+                
+                // Log to RX log
+                if (rxLogWriters[terminalIndex] != null)
+                {
+                    WriteRxLog(terminalIndex, $"\n[CountKeys] '{keyword}' Count: {pduPowerOnCount[terminalIndex]}\n", false);
+                }
+                
+                // Update status bar
+                UpdatePduPowerCycleStatus();
+            }
+            catch (Exception ex)
+            {
+                AppLogger.LogError($"[Terminal {terminalIndex + 1}] CountKeys error: {ex.Message}");
             }
         }
         #endregion

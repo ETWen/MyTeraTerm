@@ -63,15 +63,15 @@ namespace MyTeraTerm
                     }
                 }
                 
-                toolStripStatusLabel2.Text = $"[Power Cycle] {string.Join("     ", termStats)}";
+                toolStripStatusLabel2.Text = $"[Counter] {string.Join("     ", termStats)}";
                 
-                // If any terminal has a power on count greater than 0, show in dark blue; otherwise gray
+                // If any terminal has a count greater than 0, show in dark blue; otherwise gray
                 bool hasActiveCount = pduPowerOnCount.Any(count => count > 0);
                 toolStripStatusLabel2.ForeColor = hasActiveCount ? Color.DarkBlue : Color.Gray;
             }
             catch (Exception ex)
             {
-                AppLogger.LogError($"[PDU] Failed to update power cycle status: {ex.Message}");
+                AppLogger.LogError($"[Counter] Failed to update counter status: {ex.Message}");
             }
         }
         
@@ -513,33 +513,11 @@ namespace MyTeraTerm
                 {
                     success = pduController.SetPduPortOn(port);
                     AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU Port {port} turned ON: {success}");
-                    
-                    // 統計 Power On 次數
-                    if (success)
-                    {
-                        pduPowerOnCount[terminalIndex]++;
-                        AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU Power On count: {pduPowerOnCount[terminalIndex]}");
-                        
-                        // 記錄到 RX Log
-                        if (rxLogWriters[terminalIndex] != null)
-                        {
-                            WriteRxLog(terminalIndex, $"\n[PDU] Port {port} Power ON (Count: {pduPowerOnCount[terminalIndex]})\n", false);
-                        }
-                        
-                        // 更新狀態欄顯示
-                        UpdatePduPowerCycleStatus();
-                    }
                 }
                 else
                 {
                     success = pduController.SetPduPortOff(port);
                     AppLogger.LogInfo($"[Terminal {terminalIndex + 1}] PDU Port {port} turned OFF: {success}");
-                    
-                    // 記錄到 RX Log
-                    if (success && rxLogWriters[terminalIndex] != null)
-                    {
-                        WriteRxLog(terminalIndex, $"\n[PDU] Port {port} Power OFF\n", false);
-                    }
                 }
                 
                 if (success)

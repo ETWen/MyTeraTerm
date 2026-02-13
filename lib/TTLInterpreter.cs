@@ -27,6 +27,17 @@ namespace TTLInterpreterLib
 
         // 新增：狀態更新事件
         public event Action<string, int, string> StatusChanged;
+        
+        // 新增：全體終端操作事件
+        public event Action<string, bool> SendAllRequested;
+        public event Func<string, bool> WaitAllRequested;
+        
+        // 新增：計數事件
+        public event Action<string> CountKeysRequested;
+        
+        // 用於 Waitall 同步
+        private ManualResetEvent waitAllEvent = new ManualResetEvent(false);
+        private bool waitAllResult = false;
 
         public TTLInterpreter(ComPortBridge comPortBridge)
         {
@@ -46,6 +57,7 @@ namespace TTLInterpreterLib
             {
                 receiveBuffer.Append(data);
                 lastReceivedText = receiveBuffer.ToString();
+                Console.WriteLine($"[TTL DataRX] Received {data.Length} chars, buffer now: {receiveBuffer.Length} chars");
             }
         }
 
@@ -149,6 +161,9 @@ namespace TTLInterpreterLib
                 case "sendln":
                     Send(args, true);
                     break;
+                case "sendall":
+                    Sendall(args, false);
+                    break;
                 case "pause":
                     Pause(args);
                     break;
@@ -160,15 +175,6 @@ namespace TTLInterpreterLib
                     break;
                 case "flushrecv":
                     FlushReceive();
-                    break;
-                case "logopen":
-                    LogOpen(args);
-                    break;
-                case "logwrite":
-                    LogWrite(args);
-                    break;
-                case "logclose":
-                    LogClose();
                     break;
                 case "messagebox":
                     MessageBox(args);
@@ -191,11 +197,24 @@ namespace TTLInterpreterLib
                     if (isAssignment)
                         ExecuteAssignment(originalLine);
                     break;
+                // Below command not support Original TeraTerm
+                case "waitall":
+                    Waitall(args);
+                    break;
+                case "sendlnall":
+                    Sendall(args, true);
+                    break;
                 case "pductrl":
                     ExecutePduCtrl(args);
                     break;
                 case "pduconnect":
                     ExecutePduConnect(args);
+                    break;
+                case "count":
+                    ExecuteCount(args);
+                    break;
+                case "countkeys":
+                    ExecuteCountKeys(args);
                     break;
                 default:
                     if (isAssignment)
@@ -424,6 +443,127 @@ namespace TTLInterpreterLib
         protected virtual void OnPduControlRequested(int device, int port, int action)
         {
             PduControlRequested?.Invoke(device, port, action);
+        }
+        
+        /// <summary>
+        /// Execute countkeys command - increment counter for user-specified keyword
+        /// </summary>
+        /// <summary>
+        /// Execute count command - immediately increment counter
+        /// </summary>
+        private void ExecuteCount(string args)
+        {
+            try
+            {
+                // Remove quotes and whitespace
+                string keyword = args.Trim().Trim('"', '\'');
+                
+                // Replace variables
+                keyword = ReplaceVariables(keyword);
+                
+                if (string.IsNullOrWhiteSpace(keyword))
+                {
+                    Console.WriteLine($"[TTL Count] Error: Keyword cannot be empty");
+                    result = 0;
+                    return;
+                }
+                
+                Console.WriteLine($"[TTL Count] Immediately counting keyword: '{keyword}'");
+                
+                // Trigger count event
+                CountKeysRequested?.Invoke(keyword);
+                
+                result = 1; // Success
+                
+                if (logWriter != null)
+                    logWriter.WriteLine($"[Count] Keyword: '{keyword}'");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[TTL Count] Error: {ex.Message}");
+                result = 0;
+                
+                if (logWriter != null)
+                    logWriter.WriteLine($"[Count] Error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Execute countkeys command - wait for keyword to appear, then increment counter
+        /// </summary>
+        private void ExecuteCountKeys(string args)
+        {
+            try
+            {
+                // Remove quotes and whitespace
+                string keyword = args.Trim().Trim('"', '\'');
+                
+                // Replace variables
+                keyword = ReplaceVariables(keyword);
+                
+                if (string.IsNullOrWhiteSpace(keyword))
+                {
+                    Console.WriteLine($"[TTL CountKeys] Error: Keyword cannot be empty");
+                    result = 0;
+                    return;
+                }
+                
+                Console.WriteLine($"[TTL CountKeys] Waiting for keyword: '{keyword}'");
+                
+                if (logWriter != null)
+                    logWriter.WriteLine($"[CountKeys] Waiting for keyword: '{keyword}'");
+                
+                int checkInterval = 100; // Check every 100ms
+                int elapsedTime = 0;
+                
+                while (true)
+                {
+                    // Check if cancelled
+                    if (isCancelled)
+                    {
+                        Console.WriteLine("[TTL CountKeys] Cancelled");
+                        throw new OperationCanceledException("CountKeys operation was cancelled by user");
+                    }
+                    
+                    // Check if keyword exists in buffer
+                    lock (receiveBuffer)
+                    {
+                        string bufferContent = receiveBuffer.ToString();
+                        if (bufferContent.Contains(keyword))
+                        {
+                            Console.WriteLine($"[TTL CountKeys] Keyword found in buffer after {elapsedTime}ms: '{keyword}'");
+                            
+                            // Trigger count event
+                            CountKeysRequested?.Invoke(keyword);
+                            
+                            result = 1; // Success
+                            
+                            if (logWriter != null)
+                                logWriter.WriteLine($"[CountKeys] Keyword found after {elapsedTime}ms");
+                            
+                            return;
+                        }
+                    }
+                    
+                    // Wait before next check
+                    Thread.Sleep(checkInterval);
+                    elapsedTime += checkInterval;
+                    
+                    // Report progress every 10 seconds
+                    if (elapsedTime % 10000 == 0)
+                    {
+                        Console.WriteLine($"[TTL CountKeys] Still waiting for '{keyword}'... ({elapsedTime / 1000}s elapsed)");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[TTL CountKeys] Error: {ex.Message}");
+                result = 0;
+                
+                if (logWriter != null)
+                    logWriter.WriteLine($"[CountKeys] Error: {ex.Message}");
+            }
         }
         #endregion
 
@@ -957,7 +1097,93 @@ namespace TTLInterpreterLib
             if (logWriter != null)
                 logWriter.WriteLine($">> {text}");
         }
+        
+        /// <summary>
+        /// Send text to all connected terminals
+        /// </summary>
+        private void Sendall(string args, bool newline)
+        {
+            string text = args.Trim('\'', '"');
+            
+            if (SendAllRequested == null)
+            {
+                Console.WriteLine($"[TTL SendAll] Error: No handler for SendAllRequested event");
+                result = 0;
+                return;
+            }
+            
+            Console.WriteLine($"[TTL SendAll] Sending to all terminals: {text}");
+            SendAllRequested?.Invoke(text, newline);
+            
+            if (logWriter != null)
+                logWriter.WriteLine($">> [All] {text}");
+            
+            result = 1;
+        }
 
+        /// <summary>
+        /// Wait for expected text in all connected terminals
+        /// </summary>
+        private void Waitall(string text)
+        {
+            // Remove quotes if present
+            text = text.Trim().Trim('"', '\'');
+            
+            // Replace variables
+            text = ReplaceVariables(text);
+            
+            if (WaitAllRequested == null)
+            {
+                Console.WriteLine($"[TTL WaitAll] Error: No handler for WaitAllRequested event");
+                result = 0;
+                return;
+            }
+            
+            Console.WriteLine($"[TTL WaitAll] Waiting for text in all terminals: '{text}'");
+            
+            if (logWriter != null)
+                logWriter.WriteLine($"[WaitAll] Waiting for: '{text}'");
+            
+            int checkInterval = 100; // Check every 100ms
+            int elapsedTime = 0;
+            
+            while (true)
+            {
+                // 檢查是否被取消
+                if (isCancelled)
+                {
+                    Console.WriteLine("[TTL] WaitAll cancelled");
+                    throw new OperationCanceledException("WaitAll operation was cancelled by user");
+                }
+                
+                // 詢問 Form1 是否所有終端都收到了
+                bool allReceived = WaitAllRequested?.Invoke(text) ?? false;
+                
+                Console.WriteLine($"[TTL WaitAll] Check result: allReceived={allReceived}, elapsed={elapsedTime}ms");
+                
+                if (allReceived)
+                {
+                    Console.WriteLine($"[TTL WaitAll] Text found in all terminals after {elapsedTime}ms: '{text}'");
+                    
+                    if (logWriter != null)
+                        logWriter.WriteLine($"[WaitAll] Text found in all terminals after {elapsedTime}ms");
+                    
+                    result = 1; // Success
+                    return;
+                }
+                
+                // Wait before next check
+                Thread.Sleep(checkInterval);
+                elapsedTime += checkInterval;
+                
+                // Report progress every 10 seconds
+                if (elapsedTime % 10000 == 0)
+                {
+                    Console.WriteLine($"[TTL WaitAll] Still waiting for '{text}' in all terminals... ({elapsedTime / 1000}s elapsed)");
+                }
+            }
+        }
+        
         /// <summary>
         /// Wait for expected text in receive buffer
         /// </summary>
@@ -1055,6 +1281,54 @@ namespace TTLInterpreterLib
                 Console.WriteLine("[TTL] Receive buffer flushed");
             }
         }
+        
+        /// <summary>
+        /// Check if receive buffer contains specified text
+        /// </summary>
+        public bool ContainsText(string text)
+        {
+            lock (receiveBuffer)
+            {
+                string bufferContent = receiveBuffer.ToString();
+                bool contains = bufferContent.Contains(text);
+                Console.WriteLine($"[TTL ContainsText] Looking for: '{text}', Buffer length: {bufferContent.Length}, Contains: {contains}");
+                if (bufferContent.Length > 0 && bufferContent.Length <= 200)
+                {
+                    Console.WriteLine($"[TTL ContainsText] Buffer content: '{bufferContent}'");
+                }
+                else if (bufferContent.Length > 200)
+                {
+                    Console.WriteLine($"[TTL ContainsText] Buffer content (first 200): '{bufferContent.Substring(0, 200)}'");
+                }
+                return contains;
+            }
+        }
+        
+        /// <summary>
+        /// Remove text from receive buffer (used by WaitAll)
+        /// </summary>
+        public void RemoveTextFromBuffer(string text)
+        {
+            lock (receiveBuffer)
+            {
+                string currentBuffer = receiveBuffer.ToString();
+                int foundIndex = currentBuffer.IndexOf(text);
+                
+                if (foundIndex >= 0)
+                {
+                    int removeLength = foundIndex + text.Length;
+                    
+                    if (removeLength <= receiveBuffer.Length)
+                    {
+                        string remainingText = currentBuffer.Substring(removeLength);
+                        receiveBuffer.Clear();
+                        receiveBuffer.Append(remainingText);
+                        
+                        Console.WriteLine($"[TTL] Removed '{text}' from buffer (WaitAll)");
+                    }
+                }
+            }
+        }
 
         private void Pause(string args)
         {
@@ -1089,38 +1363,6 @@ namespace TTLInterpreterLib
                 timeout = ParseInt(args) * 1000;
 
             Console.WriteLine($"[TTL] Timeout set to {timeout}ms");
-        }
-
-        private void LogOpen(string args)
-        {
-            var match = Regex.Match(args, @"'([^']+)'");
-            if (match.Success)
-            {
-                string filename = match.Groups[1].Value;
-                logWriter = new StreamWriter(filename, false);
-                Console.WriteLine($"[TTL] Log opened: {filename}");
-            }
-        }
-
-        private void LogWrite(string args)
-        {
-            if (logWriter != null)
-            {
-                string text = args.Trim('\'', '"');
-                logWriter.WriteLine(text);
-                logWriter.Flush();
-                Console.WriteLine($"[TTL] Logged: {text}");
-            }
-        }
-
-        private void LogClose()
-        {
-            if (logWriter != null)
-            {
-                logWriter.Close();
-                logWriter = null;
-                Console.WriteLine("[TTL] Log closed");
-            }
         }
 
         private void MessageBox(string args)
@@ -1210,7 +1452,7 @@ namespace TTLInterpreterLib
 
         private void Cleanup()
         {
-            LogClose();
+            
         }
 
         #endregion
@@ -1234,8 +1476,8 @@ namespace TTLInterpreterLib
             {
                 if (disposing)
                 {
-                    // Close log file
-                    LogClose();
+                    // Dispose ManualResetEvent
+                    waitAllEvent?.Dispose();
                     
                     // Unsubscribe from bridge events
                     if (bridge != null)

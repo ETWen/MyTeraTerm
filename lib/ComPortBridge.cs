@@ -407,6 +407,8 @@ namespace COMPortBrdigeLib
         }
 
         public bool IsRunning => isRunning;
+        public string Port1Name => port1?.PortName ?? "N/A";
+        public string Port2Name => port2?.PortName ?? "N/A";
 
         ~ComPortBridge()
         {
